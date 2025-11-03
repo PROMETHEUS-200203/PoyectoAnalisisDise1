@@ -1,0 +1,855 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0ea5e9;
+    --primary-dark: #0284c7;
+    --secondary: #06b6d4;
+    --accent: #22d3ee;
+    --bg-light: #f0f9ff;
+    --bg-dark: #0c4a6e;
+    --text-light: #0c4a6e;
+    --text-dark: #e0f2fe;
+    --sidebar-light: #0ea5e9;
+    --sidebar-dark: #075985;
+    --card-light: #ffffff;
+    --card-dark: #0e7490;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background: var(--bg-dark);
+    color: #ffffff;
+}
+
+/* Navbar Vertical */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, #7dd3fc 0%, #bae6fd 40%, #e0f2fe 70%, #ffffff 100%);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    padding: 0;
+    transition: transform 0.3s, background 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+body.dark-mode .sidebar {
+    background: linear-gradient(180deg, #0c4a6e 0%, #075985 50%, #0e7490 100%);
+    box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+}
+
+/* Logo Container */
+.sidebar-logo {
+    padding: 1px ;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-logo img { 
+    max-width: 135px;
+    height: auto;
+    border-radius: 8px;
+}
+
+body.dark-mode .sidebar-logo {
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header {
+    padding: 14px 19px;
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: none;
+    text-align: center;
+}
+
+.sidebar-header h1 {
+    font-size: 23px;
+    color: var(--bg-dark);  /* CAMBIA ESTE COLOR - Título "Mi Proyecto" */
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .sidebar-header h1 {
+    color: white;  /* CAMBIA ESTE COLOR - Título en modo oscuro */
+}
+
+/* Tabla en modo oscuro */
+body.dark-mode table {
+    background: #1e293b;  /* Fondo más oscuro para la tabla */
+}
+
+body.dark-mode table thead tr {
+    background: #0c4a6e !important;  /* Header más oscuro */
+}
+
+body.dark-mode table tbody tr {
+    background: #1e293b;  /* Filas más oscuras */
+}
+
+body.dark-mode table td,
+body.dark-mode table th {
+    color: #ffffff;  /* Letras blancas */
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.sidebar-header p {
+    font-size: 17px;
+    color: var(--bg-dark);  /* CAMBIA ESTE COLOR - Subtítulo "Sistema de Gestión..." */
+    opacity: 0.95;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .sidebar-header p {
+    color: white;  /* CAMBIA ESTE COLOR - Subtítulo en modo oscuro */
+    opacity: 0.9;
+}
+/* Títulos principales de las secciones en modo oscuro */
+body.dark-mode .page-header h2 {
+    color: #ffffff;  /* AGREGA ESTO - "Marco Teórico" en blanco */
+}
+
+/* Títulos de los cards (h3) en modo oscuro */
+body.dark-mode .card h3 {
+    color: #f7f7f7;  /* Color celeste claro para subtítulos */
+}
+
+/* Subtítulos h4 dentro de cards en modo oscuro */
+body.dark-mode .card h4 {
+    color: #ffffff;  /* AGREGA ESTO - celeste más claro para "Reserva de Mesas", "Ventaja", etc */
+}
+
+/* También para hacer más claros los textos específicos */
+body.dark-mode .card strong {
+    color: #e0f2fe;  /* Texto en negrita más claro */
+}
+
+
+
+
+
+/* Títulos específicos en modo oscuro */
+body.dark-mode .card h3 {
+    color: #ffffff !important;  /* Blanco para títulos principales como "Procesos de Automatización" */
+}
+
+body.dark-mode .card h4 {
+    color: #7dd3fc !important;  /* Celeste claro para "1. Reserva de Mesas", "2. Pedidos", etc */
+}
+
+/* Para los subtítulos numerados específicamente */
+body.dark-mode .card div[style*="background"] h4 {
+    color: #bae6fd !important;  /* Celeste muy claro */
+}
+
+/* Para el texto normal dentro de cards */
+body.dark-mode .card p {
+    color: #e0f2fe !important;  /* Blanco suave para párrafos */
+}
+
+/* Para el título "Ventaja para Los Nísperos" */
+body.dark-mode .card div[style*="border-left"] h4 {
+    color:var(--text-dark) !important;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 2rem 0;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    color: #0c4a6e;
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+body.dark-mode .nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    background: rgba(14, 165, 233, 0.15);
+    border-left-color: #0ea5e9;
+}
+
+body.dark-mode .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: white;
+}
+
+.nav-link.active {
+    background: rgba(14, 165, 233, 0.25);
+    border-left-color: #0ea5e9;
+    color: #064e6e;  /* Color más oscuro cuando está seleccionado */
+    font-weight: 600;
+}
+
+body.dark-mode .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-left-color: white;
+    color: white;
+}
+
+.nav-icon {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Toggle Dark Mode */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    transition: all 0.3s;
+    z-index: 1001;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+/* Menu Toggle for Mobile */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    z-index: 1001;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 280px;
+    padding: 2rem;
+    min-height: 100vh;
+    transition: margin-left 0.3s;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+body.dark-mode .page-header h2 {
+    color: #ffffff !important;  /* CAMBIA AQUÍ - Color blanco para modo oscuro */
+    background: none !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+body.dark-mode .page-header p {
+    color: #e0f2fe !important;  /* Color del subtítulo en modo oscuro */
+}
+/* Cards */
+.card {
+    background: var(--card-light);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+body.dark-mode .card {
+    background: var(--card-dark);
+    color: var(--text-dark);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+body.darkmode .card h2 {
+    color: var(--card-light);  /* AGREGA ESTA LÍNEA - títulos celestes claros en modo oscuro */
+}
+body.dark-mode .card h3 {
+    color: var(--bg-light);  /* AGREGA ESTA LÍNEA - títulos celestes claros en modo oscuro */
+}
+/* También para párrafos y texto dentro de cards */
+body.dark-mode .card p,
+body.dark-mode .card li,
+body.dark-mode .card td,
+body.dark-mode .card th {
+    color: #ffffff;  /* AGREGA ESTO - todo el texto blanco */
+}
+/* Upload Area */
+.upload-area {
+    border: 3px dashed var(--primary);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    background: rgba(99, 102, 241, 0.05);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-area:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--secondary);
+}
+
+.upload-area input[type="file"] {
+    display: none;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Diagram Preview */
+.diagram-preview {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.diagram-placeholder {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    text-align: center;
+    border: 2px dashed var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .page-header h2 {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .upload-area {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Text Editor */
+.text-editor {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    background: var(--card-light);
+    color: var(--text-light);
+}
+
+body.dark-mode .text-editor {
+    background: var(--card-dark);
+    color: var(--text-dark);
+}
+
+.btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.5);
+}
+/* --- Ajuste visual para las imágenes de las cards --- */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.image-preview img {
+    width: 100%;
+    max-width: 260px;   /* todas las imágenes con el mismo ancho */
+    height: 180px;      /* altura uniforme */
+    object-fit: cover;  /* recorta sin deformar */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-preview img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Responsivo para móviles */
+@media (max-width: 480px) {
+    .image-preview img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+/* Galería normal (ya centrada) */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.image-preview img {
+    width: 100%;
+    max-width: 260px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-preview img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ----- Lightbox (imagen ampliada) ----- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lightbox.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Botones de navegación */
+.lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.lightbox-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.lightbox-btn.prev { left: 5%; }
+.lightbox-btn.next { right: 5%; }
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+/* --- Galería general --- */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.image-preview img {
+    width: 100%;
+    max-width: 230px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.image-preview img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* --- Modal (galería ampliada) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Imagen dentro del modal */
+.modal-content {
+    width: 90vw;              /* ancho fijo relativo a la ventana */
+    height: 70vh;             /* altura uniforme */
+    object-fit: cover;        /* recorta sin deformar */
+    border-radius: 12px;
+    display: block;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Texto debajo (nombre o alt) */
+.modal-caption {
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+/* --- Navegación del modal --- */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.prev:hover, .next:hover {
+    color: #ddd;
+}
+
+.prev { left: 40px; }
+.next { right: 40px; }
+
+/* --- Botón de cerrar --- */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #bbb;
+}
+
+/* --- Efecto suave (fade-in / fade-out) --- */
+.modal.show {
+    display: flex;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Móvil responsivo --- */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95vw;
+        height: 60vh;
+    }
+
+    .prev, .next {
+        font-size: 24px;
+    }
+}
+
+
+/* Visor de diagramas */
+.diagram-viewer {
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+body.dark-mode .diagram-viewer {
+    background: #1e293b;
+    border-color: var(--secondary);
+}
+
+.diagram-controls {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(14, 165, 233, 0.1);
+    border-bottom: 1px solid var(--primary);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+body.dark-mode .diagram-controls {
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.diagram-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.diagram-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.zoom-info {
+    margin-left: auto;
+    font-weight: bold;
+    color: var(--primary);
+    padding: 8px 16px;
+    background: white;
+    border-radius: 6px;
+}
+
+body.dark-mode .zoom-info {
+    background: var(--card-dark);
+    color: var(--accent);
+}
+
+.diagram-container {
+    overflow: auto;
+    padding: 20px;
+    text-align: center;
+    max-height: 70vh;
+    background: white;
+    cursor: default;
+    position: relative;
+}
+
+body.dark-mode .diagram-container {
+    background: #0f172a;
+}
+
+.diagram-container img {
+    max-width: none;  /* CAMBIADO: permite que la imagen sea más grande que el contenedor */
+    height: auto;
+    transition: transform 0.3s;
+    cursor: grab;
+    display: inline-block;
+    user-select: none;
+    transform-origin: center center;  /* AGREGADO: punto de origen del zoom */
+}
+
+.diagram-container img:active {
+    cursor: grabbing;
+}
+
+
+.dfd-controls {
+    display: flex;
+    align-items: center;       /* Centra verticalmente */
+    justify-content: center;   /* Centra horizontalmente */
+    gap: 0.5rem;               /* Espacio entre todos los elementos */
+}
+
+.dfd-controls #dfd-index {
+    margin: 0 1rem;            /* Separa un poco de los botones izquierda/derecha */
+    font-weight: bold;
+}
+.navbar-toggle {
+    position: fixed;
+    top: 0.1rem;
+    left: 0rem;
+    background: transparent;
+    color: var(--text-light);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.8rem;
+    transition: all 0.3s;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode .navbar-toggle {
+    color: white;
+}
+
+.navbar-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(14, 165, 233, 0.1);
+}
+
+/* Cuando el sidebar está oculto */
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Cuando el contenido principal se expande */
+.main-content.expanded {
+    margin-left: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: none;
+    }
+}
