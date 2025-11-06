@@ -853,3 +853,111 @@ body.dark-mode .navbar-toggle {
         display: none;
     }
 }
+
+
+
+
+
+
+/* Ventana de previsualización flotante */
+.nav-preview {
+    position: fixed;
+    left: 300px;
+    top: 10%;
+    width: 600px;
+    max-height: 80vh;
+    background: var(--card-light);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    overflow: hidden;
+    pointer-events: none;
+    border: 2px solid var(--primary);
+}
+
+body.dark-mode .nav-preview {
+    background: var(--card-dark);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.nav-preview.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.preview-header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preview-content {
+    padding: 1.5rem;
+    max-height: calc(80vh - 60px);
+    overflow-y: auto;
+    background: var(--card-light);
+}
+
+body.dark-mode .preview-content {
+    background: var(--card-dark);
+}
+
+/* Miniaturizar contenido */
+.preview-content .page-header h2 {
+    font-size: 1.8rem !important;
+}
+
+.preview-content .card {
+    padding: 1.2rem !important;
+    margin-bottom: 1rem !important;
+    transform: scale(0.95);
+}
+
+.preview-content .card h3 {
+    font-size: 1.2rem !important;
+}
+
+.preview-content img {
+    max-height: 200px !important;
+    object-fit: contain !important;
+}
+
+.preview-content .diagram-controls {
+    display: none !important;
+}
+
+.preview-content .upload-area {
+    padding: 1rem !important;
+}
+
+.preview-content .video-container {
+    max-height: 300px !important;
+}
+
+.preview-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.preview-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.preview-content::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-preview {
+        display: none;
+    }
+}

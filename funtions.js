@@ -516,3 +516,115 @@ function toggleNavbar() {
         mainContent.classList.toggle('expanded');
     }
 }
+
+
+
+
+
+
+
+// Mostrar previsualización REAL de cada sección
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const preview = document.getElementById('nav-preview');
+    const previewHeader = document.getElementById('preview-header');
+    const previewContentEl = document.getElementById('preview-content');
+    let hideTimeout;
+
+    // Mapeo de secciones
+    const sectionMap = {
+        'inicio': 'inicio',
+        'marco-teorico': 'marco-teorico',
+        'analisis-estructurado': 'analisis-estructurado',
+        'poo': 'poo',
+        'video': 'video',
+        'contactos': 'contactos'
+    };
+
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function(e) {
+            clearTimeout(hideTimeout);
+            
+            // Obtener el texto del enlace
+            const linkText = this.querySelector('span:last-child').textContent.trim();
+            const sectionIcon = this.querySelector('.nav-icon i') ? this.querySelector('.nav-icon i').className : 'fas fa-file';
+            
+            // Determinar qué sección mostrar
+            let sectionId = null;
+            
+            if (linkText.includes('INICIO')) sectionId = 'inicio';
+            else if (linkText.includes('MARCO')) sectionId = 'marco-teorico';
+            else if (linkText.includes('ANÁLISIS')) sectionId = 'analisis-estructurado';
+            else if (linkText.includes('PARADIGMA')) sectionId = 'poo';
+            else if (linkText.includes('VIDEO')) sectionId = 'video';
+            else if (linkText.includes('CONTACTOS')) sectionId = 'contactos';
+            
+            console.log('Intentando mostrar sección:', sectionId); // Para debug
+            
+            if (sectionId) {
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    console.log('Sección encontrada:', sectionId); // Para debug
+                    
+                    // Clonar el contenido de la sección
+                    const clone = section.cloneNode(true);
+                    
+                    // Eliminar IDs duplicados
+                    clone.removeAttribute('id');
+                    clone.removeAttribute('class');
+                    const elementsWithId = clone.querySelectorAll('[id]');
+                    elementsWithId.forEach(el => el.removeAttribute('id'));
+                    
+                    // Deshabilitar interacciones
+                    const buttons = clone.querySelectorAll('button');
+                    buttons.forEach(btn => {
+                        btn.removeAttribute('onclick');
+                        btn.style.pointerEvents = 'none';
+                        btn.style.opacity = '0.7';
+                    });
+                    
+                    const links = clone.querySelectorAll('a');
+                    links.forEach(a => {
+                        a.style.pointerEvents = 'none';
+                    });
+                    
+                    const inputs = clone.querySelectorAll('input');
+                    inputs.forEach(input => {
+                        input.disabled = true;
+                        input.style.display = 'none';
+                    });
+                    
+                    // Actualizar header
+                    previewHeader.innerHTML = `<i class="${sectionIcon}"></i> Vista Previa: ${linkText}`;
+                    
+                    // Limpiar e insertar contenido
+                    previewContentEl.innerHTML = '';
+                    previewContentEl.appendChild(clone);
+                    
+                    // Mostrar previsualización
+                    preview.classList.add('active');
+                    
+                    console.log('Previsualización mostrada'); // Para debug
+                } else {
+                    console.error('Sección no encontrada:', sectionId); // Para debug
+                }
+            }
+        });
+
+        link.addEventListener('mouseleave', function() {
+            hideTimeout = setTimeout(() => {
+                preview.classList.remove('active');
+            }, 300);
+        });
+    });
+
+    // Mantener visible al pasar sobre la previsualización
+    preview.addEventListener('mouseenter', function() {
+        clearTimeout(hideTimeout);
+    });
+
+    preview.addEventListener('mouseleave', function() {
+        preview.classList.remove('active');
+    });
+});
