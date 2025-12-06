@@ -4,152 +4,175 @@
             document.getElementById('sidebar').classList.toggle('active');
         }
 
-        // Toggle Theme
-        function toggleTheme() {
-  const body = document.body;
-  const icon = document.getElementById('theme-icon');
+                // Toggle Theme
+                function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('theme-icon');
   
-  // Alternar clase del tema
-  body.classList.toggle('dark-mode');
+    // Alternar clase del tema
+    body.classList.toggle('dark-mode');
   
-  // Cambiar ícono según el modo
-  if (body.classList.contains('dark-mode')) {
-    icon.classList.replace('fa-moon', 'fa-sun'); // ☀️
-  } else {
-    icon.classList.replace('fa-sun', 'fa-moon'); // 🌙
-  }
+    // Cambiar ícono según el modo
+    if (body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun'); // ☀️
+    } else {
+        icon.classList.replace('fa-sun', 'fa-moon'); // 🌙
+    }
 }
 
-        // Show Section
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
+// Inicializar galería y lightbox al cargar
+document.addEventListener("DOMContentLoaded", () => {
+    const galleries = document.querySelectorAll(".gallery");
+    const lightbox = document.createElement("div");
+    lightbox.classList.add("lightbox");
+    lightbox.innerHTML = `
+        <button class="lightbox-close">✖</button>
+        <button class="lightbox-btn prev">❮</button>
+        <img src="" alt="Imagen ampliada">
+        <button class="lightbox-btn next">❯</button>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector("img");
+    const closeBtn = lightbox.querySelector(".lightbox-close");
+    const prevBtn = lightbox.querySelector(".prev");
+    const nextBtn = lightbox.querySelector(".next");
+    let currentIndex = 0;
+    let currentGallery = [];
+
+    galleries.forEach(gallery => {
+        const images = gallery.querySelectorAll("img");
+        images.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                currentGallery = Array.from(images);
+                currentIndex = index;
+                openLightbox(currentGallery[currentIndex].src);
             });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Update active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            event.currentTarget.classList.add('active');
-            
-            // Close sidebar on mobile
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('active');
-            }
-        }
-
-        // Preview Image
-        function previewImage(input, previewId) {
-            const preview = document.getElementById(previewId);
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.innerHTML = `<img src="${e.target.result}" class="diagram-preview" alt="Diagrama">`;
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // Preview Video
-        function previewVideo(input) {
-            const videoContainer = document.getElementById('video-container');
-            const videoPlaceholder = document.getElementById('video-placeholder');
-            const videoPlayer = document.getElementById('video-player');
-            const videoSource = document.getElementById('video-source');
-            
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const url = URL.createObjectURL(file);
-                
-                videoSource.src = url;
-                videoSource.type = file.type;
-                videoPlayer.load();
-                
-                videoContainer.style.display = 'block';
-                videoPlaceholder.style.display = 'none';
-            }
-        }
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const menuToggle = document.querySelector('.menu-toggle');
-            
-            if (window.innerWidth <= 768) {
-                if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-                    sidebar.classList.remove('active');
-                }
-            }
         });
-    
-
-
-        document.addEventListener("DOMContentLoaded", () => {
-  const galleries = document.querySelectorAll(".gallery");
-  const lightbox = document.createElement("div");
-  lightbox.classList.add("lightbox");
-  lightbox.innerHTML = `
-    <button class="lightbox-close">✖</button>
-    <button class="lightbox-btn prev">❮</button>
-    <img src="" alt="Imagen ampliada">
-    <button class="lightbox-btn next">❯</button>
-  `;
-  document.body.appendChild(lightbox);
-
-  const lightboxImg = lightbox.querySelector("img");
-  const closeBtn = lightbox.querySelector(".lightbox-close");
-  const prevBtn = lightbox.querySelector(".prev");
-  const nextBtn = lightbox.querySelector(".next");
-  let currentIndex = 0;
-  let currentGallery = [];
-
-  galleries.forEach(gallery => {
-    const images = gallery.querySelectorAll("img");
-    images.forEach((img, index) => {
-      img.addEventListener("click", () => {
-        currentGallery = Array.from(images);
-        currentIndex = index;
-        openLightbox(currentGallery[currentIndex].src);
-      });
     });
-  });
 
-  function openLightbox(src) {
-    lightboxImg.src = src;
-    lightbox.classList.add("active");
-  }
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add("active");
+    }
 
-  function closeLightbox() {
-    lightbox.classList.remove("active");
-  }
+    function closeLightbox() {
+        lightbox.classList.remove("active");
+    }
 
-  closeBtn.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", e => {
-    if (e.target === lightbox) closeLightbox();
-  });
+    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) closeLightbox();
+    });
 
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-    lightboxImg.src = currentGallery[currentIndex].src;
-  });
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        lightboxImg.src = currentGallery[currentIndex].src;
+    });
 
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % currentGallery.length;
-    lightboxImg.src = currentGallery[currentIndex].src;
-  });
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        lightboxImg.src = currentGallery[currentIndex].src;
+    });
 
-  // Navegación con teclas
-  document.addEventListener("keydown", e => {
-    if (!lightbox.classList.contains("active")) return;
-    if (e.key === "ArrowRight") nextBtn.click();
-    if (e.key === "ArrowLeft") prevBtn.click();
-    if (e.key === "Escape") closeLightbox();
-  });
+    // Navegación con teclas
+    document.addEventListener("keydown", e => {
+        if (!lightbox.classList.contains("active")) return;
+        if (e.key === "ArrowRight") nextBtn.click();
+        if (e.key === "ArrowLeft") prevBtn.click();
+        if (e.key === "Escape") closeLightbox();
+    });
 });
+
+const navLinks = document.querySelectorAll('.nav-link');
+    const preview = document.getElementById('nav-preview');
+    const previewHeader = document.getElementById('preview-header');
+    const previewContentEl = document.getElementById('preview-content');
+    let hideTimeout;
+
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function(e) {
+            clearTimeout(hideTimeout);
+
+            const sectionId = this.getAttribute('data-section');
+            const linkText = this.querySelector('span:last-child') ? this.querySelector('span:last-child').textContent.trim() : '';
+            const sectionIcon = this.querySelector('.nav-icon i') ? this.querySelector('.nav-icon i').className : 'fas fa-file';
+
+            if (!sectionId) return;
+
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            // Construir menú con títulos (h3/h4) de las cards
+            const cards = Array.from(section.querySelectorAll('.card'));
+            const menu = document.createElement('div');
+            menu.className = 'preview-menu';
+            const ul = document.createElement('ul');
+            ul.style.listStyle = 'none';
+            ul.style.margin = '0';
+            ul.style.padding = '0';
+
+            cards.forEach((card, idx) => {
+                const titleEl = card.querySelector('h3') || card.querySelector('h4') || card.querySelector('h2');
+                const title = titleEl ? titleEl.textContent.trim() : `Elemento ${idx+1}`;
+
+                const li = document.createElement('li');
+                li.className = 'preview-menu-item';
+                li.textContent = title;
+                li.style.padding = '10px 12px';
+                li.style.cursor = 'pointer';
+                li.style.borderRadius = '6px';
+                li.style.marginBottom = '6px';
+                li.style.fontFamily = 'inherit';
+                li.style.color = 'inherit';
+                li.style.fontSize = '0.95rem';
+                li.style.fontWeight = '500';
+
+                li.addEventListener('click', (ev) => {
+                    // Remover clase active de todos los items del menú
+                    document.querySelectorAll('.preview-menu-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    // Añadir clase active al item seleccionado
+                    li.classList.add('active');
+                    
+                    // Mostrar la sección y desplazar al elemento real
+                    showSection(sectionId, document.querySelector(`.nav-link[data-section="${sectionId}"]`));
+                    setTimeout(() => {
+                        const targetCard = document.querySelector(`#${sectionId} .card:nth-of-type(${idx+1})`);
+                        if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 120);
+                    preview.classList.remove('active');
+                });
+
+                ul.appendChild(li);
+            });
+
+            // Estilizar y posicionar la previsualización al lado del enlace
+            previewHeader.innerHTML = `<i class="${sectionIcon}"></i> ${linkText}`;
+            previewContentEl.innerHTML = '';
+            menu.appendChild(ul);
+            previewContentEl.appendChild(menu);
+
+            // Posicionar cerca del link (lado derecho)
+            const rect = this.getBoundingClientRect();
+            const left = Math.min(window.innerWidth - 320, rect.right + 8);
+            const top = Math.max(8, rect.top - 6);
+            preview.style.left = left + 'px';
+            preview.style.top = top + 'px';
+            preview.style.width = '320px';
+
+            preview.classList.add('active');
+        });
+
+        link.addEventListener('mouseleave', function() {
+            hideTimeout = setTimeout(() => { preview.classList.remove('active'); }, 220);
+        });
+    });
+
+        // Mantener visible al pasar sobre la previsualización
+        preview.addEventListener('mouseenter', function() { clearTimeout(hideTimeout); });
+        preview.addEventListener('mouseleave', function() { preview.classList.remove('active'); });
 
 function openModal(img) {
     modal.classList.add("show");
@@ -544,72 +567,83 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(link => {
         link.addEventListener('mouseenter', function(e) {
             clearTimeout(hideTimeout);
-            
-            // Obtener el texto del enlace
-            const linkText = this.querySelector('span:last-child').textContent.trim();
+
+            // Obtener identificador de sección desde data-section (si existe)
+            const sectionId = this.getAttribute('data-section') || (this.querySelector('span:last-child') && this.querySelector('span:last-child').textContent.trim().toLowerCase());
+            const linkText = this.querySelector('span:last-child') ? this.querySelector('span:last-child').textContent.trim() : '';
             const sectionIcon = this.querySelector('.nav-icon i') ? this.querySelector('.nav-icon i').className : 'fas fa-file';
-            
-            // Determinar qué sección mostrar
-            let sectionId = null;
-            
-            if (linkText.includes('INICIO')) sectionId = 'inicio';
-            else if (linkText.includes('MARCO')) sectionId = 'marco-teorico';
-            else if (linkText.includes('ANÁLISIS')) sectionId = 'analisis-estructurado';
-            else if (linkText.includes('PARADIGMA')) sectionId = 'poo';
-            else if (linkText.includes('VIDEO')) sectionId = 'video';
-            else if (linkText.includes('CONTACTOS')) sectionId = 'contactos';
-            
-            console.log('Intentando mostrar sección:', sectionId); // Para debug
-            
-            if (sectionId) {
-                const section = document.getElementById(sectionId);
-                
-                if (section) {
-                    console.log('Sección encontrada:', sectionId); // Para debug
-                    
-                    // Clonar el contenido de la sección
-                    const clone = section.cloneNode(true);
-                    
-                    // Eliminar IDs duplicados
-                    clone.removeAttribute('id');
-                    clone.removeAttribute('class');
-                    const elementsWithId = clone.querySelectorAll('[id]');
-                    elementsWithId.forEach(el => el.removeAttribute('id'));
-                    
-                    // Deshabilitar interacciones
-                    const buttons = clone.querySelectorAll('button');
-                    buttons.forEach(btn => {
-                        btn.removeAttribute('onclick');
-                        btn.style.pointerEvents = 'none';
-                        btn.style.opacity = '0.7';
+
+            if (!sectionId) return;
+
+            // (Se permite mostrar la previsualización aunque el enlace esté activo)
+
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            // Generar menú con los elementos (tarjetas) principales de la sección
+            const cards = Array.from(section.querySelectorAll('.card'));
+            const menu = document.createElement('div');
+            menu.className = 'preview-menu';
+            const menuList = document.createElement('ul');
+            menuList.style.listStyle = 'none';
+            menuList.style.padding = '8px';
+            menuList.style.margin = '0 0 10px 0';
+
+            cards.forEach((card, idx) => {
+                const titleEl = card.querySelector('h3') || card.querySelector('h4') || card.querySelector('h2');
+                const title = titleEl ? titleEl.textContent.trim() : `Elemento ${idx+1}`;
+
+                const li = document.createElement('li');
+                li.className = 'preview-menu-item';
+                li.style.padding = '6px 10px';
+                li.style.cursor = 'pointer';
+                li.style.borderRadius = '6px';
+                li.style.marginBottom = '6px';
+                li.style.background = 'rgba(0,0,0,0.03)';
+                li.textContent = title;
+
+                li.addEventListener('click', (ev) => {
+                    // Remover clase active de todos los items del menú
+                    document.querySelectorAll('.preview-menu-item').forEach(item => {
+                        item.classList.remove('active');
                     });
+                    // Añadir clase active al item seleccionado
+                    li.classList.add('active');
                     
-                    const links = clone.querySelectorAll('a');
-                    links.forEach(a => {
-                        a.style.pointerEvents = 'none';
-                    });
-                    
-                    const inputs = clone.querySelectorAll('input');
-                    inputs.forEach(input => {
-                        input.disabled = true;
-                        input.style.display = 'none';
-                    });
-                    
-                    // Actualizar header
-                    previewHeader.innerHTML = `<i class="${sectionIcon}"></i> Vista Previa: ${linkText}`;
-                    
-                    // Limpiar e insertar contenido
-                    previewContentEl.innerHTML = '';
-                    previewContentEl.appendChild(clone);
-                    
-                    // Mostrar previsualización
-                    preview.classList.add('active');
-                    
-                    console.log('Previsualización mostrada'); // Para debug
-                } else {
-                    console.error('Sección no encontrada:', sectionId); // Para debug
-                }
-            }
+                    // Al hacer click en el item del menú: mostrar la sección y desplazarse al elemento real
+                    showSection(sectionId, document.querySelector(`.nav-link[data-section=\"${sectionId}\"]`));
+                    setTimeout(() => {
+                        const targetCard = document.querySelector(`#${sectionId} .card:nth-of-type(${idx+1})`);
+                        if (targetCard) {
+                            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 120);
+
+                    // Ocultar preview
+                    preview.classList.remove('active');
+                });
+
+                menuList.appendChild(li);
+            });
+
+            // Encabezado de preview (solo menú, sin clon de la página)
+            previewHeader.innerHTML = `<i class="${sectionIcon}"></i> ${linkText}`;
+
+            // Limpiar e insertar solo el menú
+            previewContentEl.innerHTML = '';
+            menu.appendChild(menuList);
+            previewContentEl.appendChild(menu);
+
+            // Posicionar cerca del link (lado derecho)
+            const rect2 = this.getBoundingClientRect();
+            const left2 = Math.min(window.innerWidth - 320, rect2.right + 8);
+            const top2 = Math.max(8, rect2.top - 6);
+            preview.style.left = left2 + 'px';
+            preview.style.top = top2 + 'px';
+            preview.style.width = '320px';
+
+            // Mostrar previsualización
+            preview.classList.add('active');
         });
 
         link.addEventListener('mouseleave', function() {

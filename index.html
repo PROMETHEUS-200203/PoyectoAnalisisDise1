@@ -30,43 +30,44 @@
     </div>
     
     <div class="sidebar-header">
-        <h1>Los Nísperos</h1>
+        <h1>Restaurante</h1>
+        <h2>Los Nísperos</h2>
         <p>Sistema de Pedidos, Reservas</p>
     </div>
     
     <ul class="nav-menu">
         <li class="nav-item">
-            <a href="#" class="nav-link active" onclick="showSection('inicio')">
+            <a href="#" class="nav-link active" data-section="inicio" onclick="showSection('inicio', this)">
                 <span class="nav-icon"><i class="fas fa-home"></i></span>
                 <span>INICIO</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link" onclick="showSection('marco-teorico')">
+            <a href="#" class="nav-link" data-section="marco-teorico" onclick="showSection('marco-teorico', this)">
                 <span class="nav-icon"><i class="fas fa-book"></i></span>
                 <span>MARCO TEÓRICO</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link" onclick="showSection('analisis-estructurado')">
+            <a href="#" class="nav-link" data-section="analisis-estructurado" onclick="showSection('analisis-estructurado', this)">
                 <span class="nav-icon"><i class="fas fa-project-diagram"></i></span>
                 <span>ANÁLISIS ESTRUCTURADO</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link" onclick="showSection('poo')">
+            <a href="#" class="nav-link" data-section="poo" onclick="showSection('poo', this)">
                 <span class="nav-icon"><i class="fas fa-cubes"></i></span>
                 <span>PARADIGMA ORIENTADO A OBJETOS</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link" onclick="showSection('video')">
+            <a href="#" class="nav-link" data-section="video" onclick="showSection('video', this)">
                 <span class="nav-icon"><i class="fas fa-video"></i></span>
                 <span>VIDEO</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link" onclick="showSection('contactos')">
+            <a href="#" class="nav-link" data-section="contactos" onclick="showSection('contactos', this)">
                 <span class="nav-icon"><i class="fas fa-address-book"></i></span>
                 <span>CONTACTOS</span>
             </a>
@@ -592,106 +593,23 @@
 
 
             <div class="card">
-    <h3><i class="fa-solid fa-users"></i> Integrantes del Proyecto</h3>
-    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
-        Este sistema fue desarrollado por estudiantes de la
-        <strong>Universidad Mayor de San Andrés (UMSA)</strong> de Bolivia, 
-        como parte del proyecto de <strong>Sistema de Pedidos Online, Reservas </strong> 
-        para el restaurante "Los Nísperos".
+    <h3><i class="fa-solid fa-map-location-dot"></i> Ubicación</h3>
+    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+        Dirección: <strong>Carr. Principal Río Abajo 33</strong>
     </p>
-
-    <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
-        <!-- Integrante 1 -->
-        <div style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(6, 182, 212, 0.1)); 
-                    padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary);">
-            <h4 style="color: var(--primary); margin-bottom: 0.8rem; font-size: 1.2rem;">
-                <i class="fa-solid fa-user-tie"></i> Ricardo Atanacio Villca
-            </h4>
-            <p style="line-height: 1.8; margin-bottom: 0.5rem;">
-                <strong><i class="fa-solid fa-envelope"></i> Email:</strong> 
-                <a href="mailto:ricardoatanaciovillca@gmail.com" 
-                style="color: var(--primary); text-decoration: none;">
-                    ricardoatanaciovillca@gmail.com
-                </a>
-            </p>
-            <p style="line-height: 1.8;">
-                <strong><i class="fa-solid fa-graduation-cap"></i> Carrera:</strong> Informática
-            </p>
-        </div>
-
-        <!-- Integrante 2 -->
-        <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(34, 211, 238, 0.1)); 
-                    padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--secondary);">
-            <h4 style="color: var(--secondary); margin-bottom: 0.8rem; font-size: 1.2rem;">
-                <i class="fa-solid fa-user-tie"></i> Alexis Augusto Camara Cabezas
-            </h4>
-            <p style="line-height: 1.8; margin-bottom: 0.5rem;">
-                <strong><i class="fa-solid fa-envelope"></i> Email:</strong> 
-                <a href="mailto:alexisuagusto.cc@gmail.com" 
-                style="color: var(--secondary); text-decoration: none;">
-                    alexisuagusto.cc@gmail.com
-                </a>
-            </p>
-            <p style="line-height: 1.8;">
-                <strong><i class="fa-solid fa-graduation-cap"></i> Carrera:</strong> Informática
-            </p>
-        </div>
-
-        <!-- Integrante 3 -->
-        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(14, 165, 233, 0.1)); 
-                    padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent);">
-            <h4 style="color: var(--accent); margin-bottom: 0.8rem; font-size: 1.2rem;">
-                <i class="fa-solid fa-user-tie"></i> Maria Del Carmen Calderon Miranda 
-
-            </h4>
-            <p style="line-height: 1.8; margin-bottom: 0.5rem;">
-                <strong><i class="fa-solid fa-envelope"></i> Email:</strong> 
-                <a href="mailto:carmencalderon452@gmail.com" 
-                style="color: var(--accent); text-decoration: none;">
-                    carmencalderon452@gmail.com
-                </a>
-            </p>
-            <p style="line-height: 1.8;">
-                <strong><i class="fa-solid fa-graduation-cap"></i> Carrera:</strong> Informática
-            </p>
-        </div>
-
-        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(14, 165, 233, 0.1)); 
-                    padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent);">
-            <h4 style="color: var(--accent); margin-bottom: 0.8rem; font-size: 1.2rem;">
-                <i class="fa-solid fa-user-tie"></i> Edgar Fernando Callisaya Quispe
-
-            </h4>
-            <p style="line-height: 1.8; margin-bottom: 0.5rem;">
-                <strong><i class="fa-solid fa-envelope"></i> Email:</strong> 
-                <a href="mailto:ecallisayaq@fcpn.edu.bo" 
-                style="color: var(--accent); text-decoration: none;">
-                    ecallisayaq@fcpn.edu.bo
-                </a>
-            </p>
-            <p style="line-height: 1.8;">
-                <strong><i class="fa-solid fa-graduation-cap"></i> Carrera:</strong> Informática
-            </p>
-        </div>
-
-        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(14, 165, 233, 0.1)); 
-                    padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--accent);">
-            <h4 style="color: var(--accent); margin-bottom: 0.8rem; font-size: 1.2rem;">
-                <i class="fa-solid fa-user-tie"></i> Tania Llujtaparo Machaca  
-
-            </h4>
-            <p style="line-height: 1.8; margin-bottom: 0.5rem;">
-                <strong><i class="fa-solid fa-envelope"></i> Email:</strong> 
-                <a href="mailto:tania22pbdb@gmail.com" 
-                style="color: var(--accent); text-decoration: none;">
-                    tania22pbdb@gmail.com
-                </a>
-            </p>
-            <p style="line-height: 1.8;">
-                <strong><i class="fa-solid fa-graduation-cap"></i> Carrera:</strong> Informática
-            </p>
-        </div>
+    <div style="margin-top: 1rem; border-radius: 8px; overflow: hidden; height: 420px;">
+        <iframe
+            src="https://www.google.com/maps?q=Carr.+Principal+R%C3%ADo+Abajo+33&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Mapa de ubicación Carr. Principal Río Abajo 33">
+        </iframe>
     </div>
+    <p style="margin-top:0.8rem; font-size:0.95rem; color:#555;">La ubicación está fijada y no puede editarse desde aquí.</p>
 </div>
 
 <!-- Información del Restaurante -->

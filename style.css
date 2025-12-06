@@ -26,6 +26,68 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
+/* Marca de agua usando la imagen del logo, no cambia color de fondo */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("img/logoN.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40%;
+    /* Aumentar visibilidad para que se vea a través de los cards */
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Asegurar que la marca de agua sea más visible en modo oscuro */
+body.dark-mode::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("img/logoN.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40%;
+    /* Aumentar visibilidad en modo oscuro */
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Asegurar que el contenido esté por encima de la marca de agua */
+.sidebar, .theme-toggle, .menu-toggle {
+    z-index: 1001;
+}
+.main-content {
+    position: relative;
+    z-index: 200;
+}
+
+/* Asegurar que cards, imágenes y controles queden por encima de la marca de agua */
+.card {
+    position: relative; /* ya existe pero reforzado */
+    z-index: 210;
+}
+
+.image-preview img {
+    position: relative;
+    z-index: 215;
+}
+
+.diagram-viewer,
+.diagram-controls,
+.diagram-container {
+    position: relative;
+    z-index: 220;
+}
+
+.diagram-btn {
+    position: relative;
+    z-index: 225;
+}
+
 body.dark-mode {
     background: var(--bg-dark);
     color: #ffffff;
@@ -312,21 +374,32 @@ body.dark-mode .page-header p {
 /* Cards */
 .card {
     background: var(--card-light);
+    /* Transparencia ligera para que la marca de agua se note debajo */
+    background-color: rgba(255, 255, 255, 0.50);
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s;
+    border-left: 4px solid transparent;
+    position: relative;
 }
 
 body.dark-mode .card {
     background: var(--card-dark);
+    /* Transparencia ligera en modo oscuro también */
+    background-color: rgba(14, 116, 144, 0.59);
     color: var(--text-dark);
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+    border-left-color: var(--primary);
+}
+
+body.dark-mode .card:hover {
+    border-left-color: var(--secondary);
 }
 
 .card h3 {
@@ -497,6 +570,7 @@ body.dark-mode .text-editor {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
 .image-preview img:hover {
@@ -529,6 +603,7 @@ body.dark-mode .text-editor {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
 .image-preview img:hover {
@@ -729,14 +804,14 @@ body.dark-mode .diagram-viewer {
     display: flex;
     gap: 10px;
     padding: 15px;
-    background: rgba(14, 165, 233, 0.1);
+    background: var(--card-light);
     border-bottom: 1px solid var(--primary);
     flex-wrap: wrap;
     align-items: center;
 }
 
 body.dark-mode .diagram-controls {
-    background: rgba(14, 165, 233, 0.2);
+    background: var(--card-dark);
 }
 
 .diagram-btn {
@@ -764,6 +839,51 @@ body.dark-mode .diagram-controls {
     background: white;
     border-radius: 6px;
 }
+
+/* Estilos para la previsualización flotante (nav-preview)
+   Se mostrará como un popover al lado del enlace (posicionado por JS). */
+.nav-preview {
+    position: fixed;
+    left: 280px;
+    top: 80px;
+    width: 320px;
+    background: var(--card-light);
+    color: var(--text-light);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    z-index: 1200;
+    display: none;
+    overflow: hidden;
+    pointer-events: none;
+    font-family: inherit;
+}
+.nav-preview.active { display: block; pointer-events: auto; }
+.nav-preview .preview-header { padding: 10px 12px; background: var(--primary); color: white; border-bottom: 1px solid rgba(0,0,0,0.03); font-weight:600; }
+.nav-preview .preview-content { max-height: 60vh; overflow: auto; padding: 12px; background: transparent; }
+.nav-preview .preview-menu { margin-bottom: 6px; }
+.nav-preview .preview-menu ul { margin: 0; padding: 0; }
+.nav-preview .preview-menu-item { transition: background 0.15s, transform 0.12s, border-left 0.15s; padding: 10px 12px; border-radius:6px; color: inherit; font-weight:500; font-size:0.95rem; border-left: 3px solid transparent; }
+.nav-preview .preview-menu-item:hover { background: var(--primary); color: white; transform: translateX(4px); }
+.nav-preview .preview-menu-item.active {
+    background: transparent; /* conservar fondo transparente */
+    color: var(--primary); /* texto celeste al seleccionar */
+    border-left-color: var(--primary);
+    font-weight: 700;
+}
+
+body.dark-mode .nav-preview .preview-menu-item:hover { background: var(--secondary); color: white; }
+body.dark-mode .nav-preview .preview-menu-item.active {
+    background: transparent;
+    color: var(--secondary);
+    border-left-color: var(--accent);
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .nav-preview { left: 20px; width: calc(100% - 40px); }
+}
+
+body.dark-mode .nav-preview { background: var(--card-dark); color: var(--text-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
 
 body.dark-mode .zoom-info {
     background: var(--card-dark);
@@ -960,4 +1080,16 @@ body.dark-mode .preview-content {
     .nav-preview {
         display: none;
     }
+}
+
+/* Asegurar que las imágenes y modal/lightbox sean totalmente opacas
+   y estén por encima de la marca de agua (los cards siguen translúcidos). */
+.image-preview img,
+.diagram-container img,
+.diagram-viewer img,
+.modal-content,
+.lightbox img {
+    background-color: white; /* fondo sólido para ocultar la marca de agua debajo */
+    position: relative;
+    z-index: 230; /* mayor que los cards y la marca de agua */
 }
