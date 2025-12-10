@@ -24,8 +24,9 @@ function toggleTheme() {
     }
 }
 
-// Inicializar tema al cargar
+// Inicializar todo al cargar
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Inicializar Tema
     const savedTheme = localStorage.getItem('theme');
     const body = document.body;
     const icon = document.getElementById('theme-icon');
@@ -33,16 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let shouldBeDark = false;
 
     if (savedTheme) {
-        // Si hay preferencia guardada, respetarla
         shouldBeDark = savedTheme === 'dark';
     } else {
-        // Si no, usar lógica de hora (19:00 - 07:45)
         const now = new Date();
         const minutes = now.getHours() * 60 + now.getMinutes();
-        const startDark = 19 * 60; // 1140 min (19:00)
-        const endDark = 7 * 60 + 45; // 465 min (07:45)
-
-        // Es de noche si es >= 19:00 O < 07:45
+        const startDark = 19 * 60; // 19:00
+        const endDark = 7 * 60 + 45; // 07:45
         shouldBeDark = minutes >= startDark || minutes < endDark;
     }
 
@@ -50,10 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
         body.classList.add('dark-mode');
         if (icon) icon.classList.replace('fa-moon', 'fa-sun');
     }
-});
 
-// Inicializar galería y lightbox al cargar
-document.addEventListener("DOMContentLoaded", () => {
+    // 2. Inicializar Galería y Lightbox
     const galleries = document.querySelectorAll(".gallery");
     const lightbox = document.createElement("div");
     lightbox.classList.add("lightbox");
