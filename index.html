@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,478 +8,531 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Menu Toggle Button -->
     <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" onclick="toggleTheme()">
-  <i id="theme-icon" class="fa-solid fa-moon"></i>
-</button>
-<!-- Botón para ocultar/mostrar navbar -->
-<!-- Botón para ocultar/mostrar navbar -->
-<button class="navbar-toggle" onclick="toggleNavbar()" title="Ocultar/Mostrar menú">
-    <i class="fas fa-bars"></i>
-</button>
+        <i id="theme-icon" class="fa-solid fa-moon"></i>
+    </button>
+    <!-- Botón para ocultar/mostrar navbar -->
+    <!-- Botón para ocultar/mostrar navbar -->
+    <button class="navbar-toggle" onclick="toggleNavbar()" title="Ocultar/Mostrar menú">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-      
-    <!-- Logo -->
-    <div class="sidebar-logo">
-        <img src="img/logoN.png" alt="Logo Los Nísperos" id="logo-img">
-    </div>
-    
-    <div class="sidebar-header">
-        <h1>Restaurante</h1>
-        <h2>Los Nísperos</h2>
-        <p>Sistema de Pedidos, Reservas</p>
-    </div>
-    
-    <ul class="nav-menu">
-        <li class="nav-item">
-            <a href="#" class="nav-link active" data-section="inicio" onclick="showSection('inicio', this)">
-                <span class="nav-icon"><i class="fas fa-home"></i></span>
-                <span>INICIO</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" data-section="marco-teorico" onclick="showSection('marco-teorico', this)">
-                <span class="nav-icon"><i class="fas fa-book"></i></span>
-                <span>MARCO TEÓRICO</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" data-section="analisis-estructurado" onclick="showSection('analisis-estructurado', this)">
-                <span class="nav-icon"><i class="fas fa-project-diagram"></i></span>
-                <span>ANÁLISIS ESTRUCTURADO</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" data-section="poo" onclick="showSection('poo', this)">
-                <span class="nav-icon"><i class="fas fa-cubes"></i></span>
-                <span>PARADIGMA ORIENTADO A OBJETOS</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" data-section="video" onclick="showSection('video', this)">
-                <span class="nav-icon"><i class="fas fa-video"></i></span>
-                <span>VIDEO</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" data-section="contactos" onclick="showSection('contactos', this)">
-                <span class="nav-icon"><i class="fas fa-address-book"></i></span>
-                <span>CONTACTOS</span>
-            </a>
-        </li>
-    </ul>
-    <!-- Ventana de previsualización flotante -->
-<div class="nav-preview" id="nav-preview">
-    <div class="preview-header" id="preview-header">
-        <i class="fas fa-eye"></i> Vista Previa
-    </div>
-    <div class="preview-content" id="preview-content"></div>
-</div>
-</aside>
+
+        <!-- Logo -->
+        <div class="sidebar-logo">
+            <img src="img/logoN.png" alt="Logo Los Nísperos" id="logo-img">
+        </div>
+
+        <div class="sidebar-header">
+            <h1>Restaurante</h1>
+            <h2>Los Nísperos</h2>
+            <p>Sistema de Pedidos, Reservas</p>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-section="inicio" onclick="showSection('inicio', this)">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    <span>INICIO</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="marco-teorico" onclick="showSection('marco-teorico', this)">
+                    <span class="nav-icon"><i class="fas fa-book"></i></span>
+                    <span>MARCO TEÓRICO</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="analisis-estructurado"
+                    onclick="showSection('analisis-estructurado', this)">
+                    <span class="nav-icon"><i class="fas fa-project-diagram"></i></span>
+                    <span>ANÁLISIS ESTRUCTURADO</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="poo" onclick="showSection('poo', this)">
+                    <span class="nav-icon"><i class="fas fa-cubes"></i></span>
+                    <span>PARADIGMA ORIENTADO A OBJETOS</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="UML" onclick="showSection('UML', this)">
+                    <span class="nav-icon"><i class="fas fa-cubes"></i></span>
+                    <span>DIAGRAMAS UML Lenguaje de Modelado Unificado</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="video" onclick="showSection('video', this)">
+                    <span class="nav-icon"><i class="fas fa-video"></i></span>
+                    <span>VIDEO</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-section="contactos" onclick="showSection('contactos', this)">
+                    <span class="nav-icon"><i class="fas fa-address-book"></i></span>
+                    <span>CONTACTOS</span>
+                </a>
+            </li>
+        </ul>
+        <!-- Ventana de previsualización flotante -->
+        <div class="nav-preview" id="nav-preview">
+            <div class="preview-header" id="preview-header">
+                <i class="fas fa-eye"></i> Vista Previa
+            </div>
+            <div class="preview-content" id="preview-content"></div>
+        </div>
+    </aside>
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- INICIO -->
-       <section id="inicio" class="content-section active">
-    <div class="page-header">
-        <h2><i class="fa-solid fa-utensils"></i> Bienvenido a Los Nísperos</h2>
-        <p>Restaurante familiar especializado en Chancho a la cruz y Charquecán</p>
-    </div>
-    
-    <!-- Galería del Restaurante -->
-    <div class="card">
-        <h3><i class="fa-solid fa-image"></i> Galería del Restaurante</h3>
-        <label class="upload-area">
-            <div class="upload-icon"><i class="fa-solid fa-camera"></i></div>
-            <div class="image-preview gallery" data-gallery="restaurante">
-                <img src="img/Restaurante/img1.jpg" alt="Restaurante 1">
-                <img src="img/Restaurante/img 2.jpg" alt="Restaurante 2">
-                <img src="img/Restaurante/img3.jpg" alt="Restaurante 3">
-                <img src="img/Restaurante/img4.jpg" alt="Restaurante 4">
+        <section id="inicio" class="content-section active">
+            <div class="page-header">
+                <h2><i class="fa-solid fa-utensils"></i> Bienvenido a Los Nísperos</h2>
+                <p>Restaurante familiar especializado en Chancho a la cruz y Charquecán</p>
             </div>
-        </label>
-    </div>
 
-    <!-- Galería de Comida 1 -->
-    <div class="card">
-        <h3><i class="fa-solid fa-drumstick-bite"></i> Chancho a la cruz</h3>
-        <label class="upload-area">
-            <div class="upload-icon"><i class="fa-solid fa-utensils"></i></div>
-            <div class="image-preview gallery" data-gallery="chancho">
-                <img src="img/Chancho/ch1.jpg" alt="Chancho a la cruz 1">
-                <img src="img/Chancho/ch2.jpg" alt="Chancho a la cruz 2">
+            <!-- Galería del Restaurante -->
+            <div class="card">
+                <h3><i class="fa-solid fa-image"></i> Galería del Restaurante</h3>
+                <label class="upload-area">
+                    <div class="upload-icon"><i class="fa-solid fa-camera"></i></div>
+                    <div class="image-preview gallery" data-gallery="restaurante">
+                        <img src="img/Restaurante/img1.jpg" alt="Restaurante 1">
+                        <img src="img/Restaurante/img 2.jpg" alt="Restaurante 2">
+                        <img src="img/Restaurante/img3.jpg" alt="Restaurante 3">
+                        <img src="img/Restaurante/img4.jpg" alt="Restaurante 4">
+                    </div>
+                </label>
             </div>
-        </label>
-    </div>
 
-    <!-- Galería de Comida 2 -->
-    <div class="card">
-        <h3><i class="fa-solid fa-bowl-food"></i> Charquecán</h3>
-        <label class="upload-area">
-            <div class="upload-icon"><i class="fa-solid fa-utensils"></i></div>
-            <div class="image-preview gallery" data-gallery="charque">
-                <img src="img/charque/char2.jpg" alt="Charquecán 2">
-                <img src="img/charque/char1.jpg" alt="Charquecán 1">
-                
+            <!-- Galería de Comida 1 -->
+            <div class="card">
+                <h3><i class="fa-solid fa-drumstick-bite"></i> Chancho a la cruz</h3>
+                <label class="upload-area">
+                    <div class="upload-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="image-preview gallery" data-gallery="chancho">
+                        <img src="img/Chancho/ch1.jpg" alt="Chancho a la cruz 1">
+                        <img src="img/Chancho/ch2.jpg" alt="Chancho a la cruz 2">
+                    </div>
+                </label>
             </div>
-        </label>
-    </div>
-</section>
+
+            <!-- Galería de Comida 2 -->
+            <div class="card">
+                <h3><i class="fa-solid fa-bowl-food"></i> Charquecán</h3>
+                <label class="upload-area">
+                    <div class="upload-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="image-preview gallery" data-gallery="charque">
+                        <img src="img/charque/char2.jpg" alt="Charquecán 2">
+                        <img src="img/charque/char1.jpg" alt="Charquecán 1">
+
+                    </div>
+                </label>
+            </div>
+        </section>
 
 
-<!-- 🔍 Modal de vista ampliada -->
-<div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-    <div class="modal-caption" id="caption"></div>
-    <span class="prev">&#10094;</span>
-    <span class="next">&#10095;</span>
-</div>
+        <!-- 🔍 Modal de vista ampliada -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div class="modal-caption" id="caption"></div>
+            <span class="prev">&#10094;</span>
+            <span class="next">&#10095;</span>
+        </div>
 
 
         <!-- MARCO TEÓRICO -->
-       <section id="marco-teorico" class="content-section">
-    <div class="page-header">
-        <h2><i class="fa-solid fa-book"></i> Marco Teórico</h2>
-        <p>Sistema Integral para "Los Nísperos"</p>
-    </div>
-
-    <!-- Introducción -->
-    <div class="card">
-        <h3><i class="fa-solid fa-lightbulb"></i> Sobre el Proyecto</h3>
-        <p style="font-size: 1.1rem; line-height: 1.8;">
-            El proyecto desarrolla un <strong>sistema</strong> para <strong>"Los Nísperos"</strong>, 
-            restaurante familiar especializado en <strong>chancho a la cruz</strong> y <strong>charquecán</strong>, con el 
-            objetivo de <strong>automatizar tres procesos clave</strong>:
-        </p>
-    </div>
-
-    <!-- Procesos Automatizados -->
-    <div class="card">
-        <h3><i class="fa-solid fa-gears"></i> Procesos de Automatización</h3>
-        <div style="display: grid; gap: 1.5rem; margin-top: 1rem;">
-            <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h4 style="color: var(--primary); margin-bottom: 0.5rem;"> 1. Reserva de Mesas</h4>
-                <p style="line-height: 1.6;">Permite a los clientes seleccionar fecha, hora y número de comensales desde la web, 
-                eliminando reservas manuales por WhatsApp o cuaderno.</p>
-            </div>
-            <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary);">
-                <h4 style="color: var(--secondary); margin-bottom: 0.5rem;"> 2. Pedidos de Platos</h4>
-                <p style="line-height: 1.6;">Digitaliza la toma de órdenes (en local o para llevar), con menú interactivo que 
-                muestra disponibilidad en tiempo real según stock de ingredientes.</p>
-            </div>
-            <div style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(99, 102, 241, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent);">
-                <h4 style="color: var(--accent); margin-bottom: 0.5rem;"> 3. Gestión de Delivery</h4>
-                <p style="line-height: 1.6;">Integra seguimiento de pedidos a domicilio, asignación de repartidores y cálculo 
-                automático de tiempos de preparación y envío.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Metodologías -->
-    <div class="card">
-        <h3><i class="fa-solid fa-chart-bar"></i> Metodologías de Desarrollo</h3>
-        <p style="line-height: 1.8; margin-top: 1rem;">
-            Se aplica <strong>análisis estructurado</strong> (diagramas de flujo, contexto y diccionario de datos) 
-            para modelar la lógica de pedidos, inventario y rutas de entrega. El enfoque <strong>orientado a objetos</strong> 
-            con <strong>diagramas UML</strong> (casos de uso, clases, secuencia) define entidades como <code>Reserva</code>, 
-            <code>Pedido</code>, <code>Plato</code>, <code>Ingrediente</code> y <code>Delivery</code>, asegurando 
-            modularidad y escalabilidad.
-        </p>
-    </div>
-
-    <!-- Tecnologías -->
-    <div class="card">
-        <h3><i class="fa-solid fa-laptop-code"></i> Stack Tecnológico</h3>
-        <p style="line-height: 1.8; margin-top: 1rem;">
-            La solución se basa en los <strong>paradigmas de análisis estructurado</strong> (diagramas de flujo, de contexto y diccionario de datos) 
-            y el <strong>paradigma orientado a objetos</strong> mediante diagramas UML (casos de uso, clases y secuencia). 
-            Este enfoque permite modelar de forma clara y modular los procesos del restaurante, <strong>reduciendo errores operativos, 
-            optimizando recursos y mejorando la experiencia del cliente</strong>, todo mientras se preserva la esencia tradicional de "Los Nísperos".
-        </p>
-    </div>
-
-    <!-- Régimen Tributario -->
-    <div class="card">
-        <h3><i class="fa-solid fa-scroll"></i> Régimen Tributario Simplificado (RTS)</h3>
-        <div style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(99, 102, 241, 0.1)); padding: 2rem; border-radius: 8px; margin-top: 1rem;">
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                "Los Nísperos" opera bajo el <strong>Régimen Tributario Simplificado (RTS)</strong>, regulado por 
-                el <strong>Servicio de Impuestos Nacionales (SIN)</strong> de Bolivia, ideal para pequeños negocios 
-                familiares como restaurantes, tiendas o talleres.
-            </p>
-            
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; background: var(--card-light); border-radius: 8px; overflow: hidden;">
-                    <thead>
-                        <tr style="background: var(--primary); color: white;">
-                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-dark);">Aspecto</th>
-                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-dark);">Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);"><strong>Tipo de contribuyente</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">Personas naturales con actividades pequeñas</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);"><strong>Impuestos que reemplaza</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">IVA, IT e IUE</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);"><strong>Forma de pago</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
-                                <strong>Cuota fija trimestral</strong> determinada por:<br>
-                                <strong>1. Capital invertido:</strong> <u>10.000 Bs</u> (máx. permitido: 60.000 Bs)<br>
-                                <strong>2. Superficie del local:</strong> &lt; 200 m²<br>
-                                <strong>3. Actividad económica:</strong> <em>Restaurante – Comidas Preparadas</em> (Categoría III)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);"><strong>Categoría aplicada</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
-                                <strong>Categoría III</strong> (ingresos mensuales estimados entre 600 y 1.000 Bs)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);"><strong>Cuota trimestral</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
-                                <strong>300 Bs</strong> (fijos cada 3 meses)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);"><strong>Requisitos</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">Tener NIT, no emitir facturas con crédito fiscal, no ser sociedad</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem;"><strong>Normas legales</strong></td>
-                            <td style="padding: 1rem;">
-                                • <strong>Ley N° 843</strong> (arts. 42–45)<br>
-                                • <strong>DS N° 24484</strong> (29/01/1997)<br>
-                                • Resoluciones Normativas del SIN
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section id="marco-teorico" class="content-section">
+            <div class="page-header">
+                <h2><i class="fa-solid fa-book"></i> Marco Teórico</h2>
+                <p>Sistema Integral para "Los Nísperos"</p>
             </div>
 
-            <div style="background: rgba(99, 102, 241, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; border-left: 4px solid var(--primary);">
-                <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-lightbulb"></i> Ventaja para "Los Nísperos"</h4>
-                <p style="line-height: 1.8;">
-                    Al estar en RTS, no requiere contabilidad compleja ni facturación con crédito fiscal. 
-                    El sistema web generará <strong>reportes automáticos de ventas trimestrales</strong> para 
-                    facilitar el cálculo y pago de la cuota fija al SIN, sin necesidad de contador externo.
+            <!-- Introducción -->
+            <div class="card">
+                <h3><i class="fa-solid fa-lightbulb"></i> Sobre el Proyecto</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    El proyecto desarrolla un <strong>sistema</strong> para <strong>"Los Nísperos"</strong>,
+                    restaurante familiar especializado en <strong>chancho a la cruz</strong> y
+                    <strong>charquecán</strong>, con el
+                    objetivo de <strong>automatizar tres procesos clave</strong>:
                 </p>
             </div>
-        </div>
-    </div>
 
-    <!-- Conclusión -->
-    <div class="card">
-        <h3><i class="fa-solid fa-star"></i> Conclusión</h3>
-        <p style="font-size: 1.2rem; line-height: 1.8; text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1)); border-radius: 8px;">
-            Este marco combina <strong>modernización tecnológica</strong> con <strong>cumplimiento tributario simplificado</strong>, 
-            permitiendo que un negocio tradicional crezca de forma <strong>sostenible y legal</strong>.
-        </p>
-    </div>
-</section>
+            <!-- Procesos Automatizados -->
+            <div class="card">
+                <h3><i class="fa-solid fa-gears"></i> Procesos de Automatización</h3>
+                <div style="display: grid; gap: 1.5rem; margin-top: 1rem;">
+                    <div
+                        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;"> 1. Reserva de Mesas</h4>
+                        <p style="line-height: 1.6;">Permite a los clientes seleccionar fecha, hora y número de
+                            comensales desde la web,
+                            eliminando reservas manuales por WhatsApp o cuaderno.</p>
+                    </div>
+                    <div
+                        style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary);">
+                        <h4 style="color: var(--secondary); margin-bottom: 0.5rem;"> 2. Pedidos de Platos</h4>
+                        <p style="line-height: 1.6;">Digitaliza la toma de órdenes (en local o para llevar), con menú
+                            interactivo que
+                            muestra disponibilidad en tiempo real según stock de ingredientes.</p>
+                    </div>
+                    <div
+                        style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(99, 102, 241, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;"> 3. Gestión de Delivery</h4>
+                        <p style="line-height: 1.6;">Integra seguimiento de pedidos a domicilio, asignación de
+                            repartidores y cálculo
+                            automático de tiempos de preparación y envío.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metodologías -->
+            <div class="card">
+                <h3><i class="fa-solid fa-chart-bar"></i> Metodologías de Desarrollo</h3>
+                <p style="line-height: 1.8; margin-top: 1rem;">
+                    Se aplica <strong>análisis estructurado</strong> (diagramas de flujo, contexto y diccionario de
+                    datos)
+                    para modelar la lógica de pedidos, inventario y rutas de entrega. El enfoque <strong>orientado a
+                        objetos</strong>
+                    con <strong>diagramas UML</strong> (casos de uso, clases, secuencia) define entidades como
+                    <code>Reserva</code>,
+                    <code>Pedido</code>, <code>Plato</code>, <code>Ingrediente</code> y <code>Delivery</code>,
+                    asegurando
+                    modularidad y escalabilidad.
+                </p>
+            </div>
+
+            <!-- Tecnologías -->
+            <div class="card">
+                <h3><i class="fa-solid fa-laptop-code"></i> Stack Tecnológico</h3>
+                <p style="line-height: 1.8; margin-top: 1rem;">
+                    La solución se basa en los <strong>paradigmas de análisis estructurado</strong> (diagramas de flujo,
+                    de contexto y diccionario de datos)
+                    y el <strong>paradigma orientado a objetos</strong> mediante diagramas UML (casos de uso, clases y
+                    secuencia).
+                    Este enfoque permite modelar de forma clara y modular los procesos del restaurante,
+                    <strong>reduciendo errores operativos,
+                        optimizando recursos y mejorando la experiencia del cliente</strong>, todo mientras se preserva
+                    la esencia tradicional de "Los Nísperos".
+                </p>
+            </div>
+
+            <!-- Régimen Tributario -->
+            <div class="card">
+                <h3><i class="fa-solid fa-scroll"></i> Régimen Tributario Simplificado (RTS)</h3>
+                <div
+                    style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(99, 102, 241, 0.1)); padding: 2rem; border-radius: 8px; margin-top: 1rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        "Los Nísperos" opera bajo el <strong>Régimen Tributario Simplificado (RTS)</strong>, regulado
+                        por
+                        el <strong>Servicio de Impuestos Nacionales (SIN)</strong> de Bolivia, ideal para pequeños
+                        negocios
+                        familiares como restaurantes, tiendas o talleres.
+                    </p>
+
+                    <div style="overflow-x: auto;">
+                        <table
+                            style="width: 100%; border-collapse: collapse; margin-top: 1rem; background: var(--card-light); border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: var(--primary); color: white;">
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-dark);">
+                                        Aspecto</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-dark);">
+                                        Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Tipo de contribuyente</strong></td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        Personas naturales con actividades pequeñas</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Impuestos que reemplaza</strong></td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">IVA, IT
+                                        e IUE</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Forma de pago</strong></td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Cuota fija trimestral</strong> determinada por:<br>
+                                        <strong>1. Capital invertido:</strong> <u>10.000 Bs</u> (máx. permitido: 60.000
+                                        Bs)<br>
+                                        <strong>2. Superficie del local:</strong> &lt; 200 m²<br>
+                                        <strong>3. Actividad económica:</strong> <em>Restaurante – Comidas
+                                            Preparadas</em> (Categoría III)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Categoría aplicada</strong></td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Categoría III</strong> (ingresos mensuales estimados entre 600 y 1.000
+                                        Bs)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Cuota trimestral</strong></td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>300 Bs</strong> (fijos cada 3 meses)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <strong>Requisitos</strong></td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">Tener
+                                        NIT, no emitir facturas con crédito fiscal, no ser sociedad</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem;"><strong>Normas legales</strong></td>
+                                    <td style="padding: 1rem;">
+                                        • <strong>Ley N° 843</strong> (arts. 42–45)<br>
+                                        • <strong>DS N° 24484</strong> (29/01/1997)<br>
+                                        • Resoluciones Normativas del SIN
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div
+                        style="background: rgba(99, 102, 241, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-lightbulb"></i>
+                            Ventaja para "Los Nísperos"</h4>
+                        <p style="line-height: 1.8;">
+                            Al estar en RTS, no requiere contabilidad compleja ni facturación con crédito fiscal.
+                            El sistema web generará <strong>reportes automáticos de ventas trimestrales</strong> para
+                            facilitar el cálculo y pago de la cuota fija al SIN, sin necesidad de contador externo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusión -->
+            <div class="card">
+                <h3><i class="fa-solid fa-star"></i> Conclusión</h3>
+                <p
+                    style="font-size: 1.2rem; line-height: 1.8; text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1)); border-radius: 8px;">
+                    Este marco combina <strong>modernización tecnológica</strong> con <strong>cumplimiento tributario
+                        simplificado</strong>,
+                    permitiendo que un negocio tradicional crezca de forma <strong>sostenible y legal</strong>.
+                </p>
+            </div>
+        </section>
 
 
         <!-- ANÁLISIS ESTRUCTURADO -->
         <!-- ANÁLISIS ESTRUCTURADO -->
         <!-- ANÁLISIS ESTRUCTURADO -->
-<!-- ========================= ANÁLISIS ESTRUCTURADO ========================= -->
-<section id="analisis-estructurado" class="content-section">
-    <div class="page-header">
-         <h2><i class="fas fa-project-diagram"></i> Análisis Estructurado</h2>
-        <p>Diagramas de flujo y estructuras de datos</p>
-    </div>
+        <!-- ========================= ANÁLISIS ESTRUCTURADO ========================= -->
+        <section id="analisis-estructurado" class="content-section">
+            <div class="page-header">
+                <h2><i class="fas fa-project-diagram"></i> Análisis Estructurado</h2>
+                <p>Diagramas de flujo y estructuras de datos</p>
+            </div>
 
-    <!-- Declaración de Propósitos -->
-    <div class="card">
-        <h3><i class="fas fa-file-alt"></i> DP - DECLARACIÓN DE PROPÓSITOS</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-dp').click()">
-             <div class="upload-icon"><i class="fas fa-file-alt"></i></div>
-        </label>
-        <div id="preview-dp" class="diagram-placeholder">
-            <p style="line-height: 1.8">
-                Se pide realizar un sistema para el restaurante "Los Nísperos" que, 
-                permita planificar, ejecutar y realizar el seguimiento y evaluación 
-                de la operación diaria, bajo el paradigma del análisis estructurado, 
-                que gestione reservas de mesas, pedidos (salón y para llevar), clientes, 
-                productos (platos y bebidas) y pagos (efectivo, tarjeta y QR Simple), 
-                genere comprobantes internos y consolide ingresos y egresos de caja, 
-                emitiendo reportes operativos y resúmenes acordes al Régimen Simplificado.
-            </p>
-        </div>
-    </div>
-
-    <!-- Diagrama de Contexto -->
-    <div class="card">
-        <h3><i class="fas fa-sitemap"></i> Diagrama de Contexto</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-contexto').click()">
-            <div class="upload-icon"><i class="fas fa-sitemap"></i></div>
-        </label>
-
-        <div id="preview-contexto" class="diagram-placeholder">
-            <div class="diagram-viewer" id="viewer-contexto">
-                <div class="diagram-controls">
-                    <button class="diagram-btn" onclick="zoomDiagram('viewer-contexto', 1.2)"><i class="fas fa-search-plus"></i></button>
-                    <button class="diagram-btn" onclick="zoomDiagram('viewer-contexto', 0.8)"><i class="fas fa-search-minus"></i></button>
-                    <button class="diagram-btn" onclick="resetDiagram('viewer-contexto')"><i class="fa-solid fa-rotate-right"></i> Restaurar</button>
-                    <button class="diagram-btn" onclick="fitDiagram('viewer-contexto')"><i class="fa-solid fa-maximize"></i> Ajustar</button>
-                    <div class="zoom-info" id="zoom-info-contexto">100%</div>
-                </div>
-                <div class="diagram-container" id="container-contexto">
-                    <img 
-                        id="img-contexto" 
-                        src="img/diagramas/Diagrama de Contexto.drawio.png" 
-                        alt="Diagrama de Contexto"
-                        onload="fitDiagram('viewer-contexto')"
-                    />
+            <!-- Declaración de Propósitos -->
+            <div class="card">
+                <h3><i class="fas fa-file-alt"></i> DP - DECLARACIÓN DE PROPÓSITOS</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-dp').click()">
+                    <div class="upload-icon"><i class="fas fa-file-alt"></i></div>
+                </label>
+                <div id="preview-dp" class="diagram-placeholder">
+                    <p style="line-height: 1.8">
+                        Se pide realizar un sistema para el restaurante "Los Nísperos" que,
+                        permita planificar, ejecutar y realizar el seguimiento y evaluación
+                        de la operación diaria, bajo el paradigma del análisis estructurado,
+                        que gestione reservas de mesas, pedidos (salón y para llevar), clientes,
+                        productos (platos y bebidas) y pagos (efectivo, tarjeta y QR Simple),
+                        genere comprobantes internos y consolide ingresos y egresos de caja,
+                        emitiendo reportes operativos y resúmenes acordes al Régimen Simplificado.
+                    </p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Lista de Acontecimientos -->
-    <div class="card">
-        <h3><i class="fas fa-list-check"></i> LA - LISTA DE ACONTECIMIENTOS</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-la').click()">
-            <div class="upload-icon"><i class="fas fa-list-check"></i></div>
-        </label>
-        <div id="preview-la" class="diagram-placeholder" style="text-align: left;">
-            <ul style="line-height: 2; margin-top: 1rem; list-style-position: inside;">
-                <li>El sistema debe permitir generar cotizaciones para pedidos o reservas.</li>
-                <li>El sistema debe permitir registrar devoluciones o reclamos de los clientes.</li>
-                <li>El sistema debe enviar notificaciones de confirmación o recordatorios a los clientes.</li>
-                <li>El sistema debe emitir alertas por bajo stock de productos o bebidas.</li>
-                <li>El sistema debe permitir consultar el historial de ventas, reservas y pagos.</li>
-                <li>El sistema debe generar reportes de ventas, reservas y ganancias.</li>
-                <li>El sistema debe mantener la información de clientes, empleados y encargados.</li>
-                <li>El sistema debe garantizar la seguridad y confidencialidad de los datos registrados.</li>
-                <li>El sistema debe permitir el control de acceso según el rol del usuario (cliente, empleado, encargado).</li>
-            </ul>
-        </div>
-    </div>
+            <!-- Diagrama de Contexto -->
+            <div class="card">
+                <h3><i class="fas fa-sitemap"></i> Diagrama de Contexto</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-contexto').click()">
+                    <div class="upload-icon"><i class="fas fa-sitemap"></i></div>
+                </label>
 
-    <!-- DFD con Galería de Niveles -->
-    <div class="card">
-        <h3><i class="fas fa-exchange-alt"></i> DFD – DIAGRAMA DE FLUJO DE DATOS POR NIVELES</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-dfd').click()">
-            <div class="upload-icon"><i class="fas fa-exchange-alt"></i></div>
-        </label>
-
-        <div id="preview-dfd" class="diagram-placeholder">
-            <p style="margin-bottom: 1rem;">Navega entre los diferentes niveles del diagrama</p>
-            <div class="diagram-viewer" id="viewer-dfd-gallery">
-                <div class="diagram-controls dfd-controls">
-    <button class="diagram-btn" onclick="prevDFD()"><i class="fas fa-chevron-left"></i></button>
-    <span class="zoom-info" id="dfd-index">1/4</span>
-    <button class="diagram-btn" onclick="nextDFD()"><i class="fas fa-chevron-right"></i></button>
-    <button class="diagram-btn" onclick="zoomDFDGallery(1.2)"><i class="fas fa-search-plus"></i></button>
-    <button class="diagram-btn" onclick="zoomDFDGallery(0.8)"><i class="fas fa-search-minus"></i></button>
-    <button class="diagram-btn" onclick="fitDFDGallery()"><i class="fa-solid fa-maximize"></i> Ajustar</button>
-    <button class="diagram-btn" onclick="resetDFDGallery()"><i class="fa-solid fa-rotate-right"></i> Restaurar</button>
-    <div class="zoom-info" id="dfd-zoom-info">100%</div>
-</div>
-
-                <div class="diagram-container" id="dfd-gallery-container">
-                    <img 
-                        id="dfd-gallery-img" 
-                        src="img/diagramas/Analisis_Estructurado-Nivel0.drawio.png" 
-                        alt="DFD Nivel 0"
-                    />
+                <div id="preview-contexto" class="diagram-placeholder">
+                    <div class="diagram-viewer" id="viewer-contexto">
+                        <div class="diagram-controls">
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-contexto', 1.2)"><i
+                                    class="fas fa-search-plus"></i></button>
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-contexto', 0.8)"><i
+                                    class="fas fa-search-minus"></i></button>
+                            <button class="diagram-btn" onclick="resetDiagram('viewer-contexto')"><i
+                                    class="fa-solid fa-rotate-right"></i> Restaurar</button>
+                            <button class="diagram-btn" onclick="fitDiagram('viewer-contexto')"><i
+                                    class="fa-solid fa-maximize"></i> Ajustar</button>
+                            <div class="zoom-info" id="zoom-info-contexto">100%</div>
+                        </div>
+                        <div class="diagram-container" id="container-contexto">
+                            <img id="img-contexto" src="img/diagramas/Diagrama de Contexto.drawio.png"
+                                alt="Diagrama de Contexto" onload="fitDiagram('viewer-contexto')" />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Diagrama E/R -->
-    <div class="card">
-        <h3><i class="fas fa-network-wired"></i> E/R - DIAGRAMA ENTIDAD RELACIÓN</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-er').click()">
-            <div class="upload-icon"><i class="fas fa-network-wired"></i></div>
-        </label>
-
-        <div id="preview-er" class="diagram-placeholder">
-            <div class="diagram-viewer" id="viewer-er">
-                <div class="diagram-controls">
-                    <button class="diagram-btn" onclick="zoomDiagram('viewer-er', 1.2)"><i class="fas fa-search-plus"></i></button>
-                    <button class="diagram-btn" onclick="zoomDiagram('viewer-er', 0.8)"><i class="fas fa-search-minus"></i></button>
-                    <button class="diagram-btn" onclick="resetDiagram('viewer-er')"><i class="fa-solid fa-rotate-right"></i> Restaurar</button>
-                    <button class="diagram-btn" onclick="fitDiagram('viewer-er')"><i class="fa-solid fa-maximize"></i> Ajustar</button>
-                    <div class="zoom-info" id="zoom-info-er">100%</div>
-                </div>
-                <div class="diagram-container" id="container-er">
-                    <img 
-                        id="img-er" 
-                        src="img/diagramas/Analisis_Estructurado-ER.drawio.png" 
-                        alt="Diagrama Entidad Relación"
-                        onload="fitDiagram('viewer-er')"
-                    />
+            <!-- Lista de Acontecimientos -->
+            <div class="card">
+                <h3><i class="fas fa-list-check"></i> LA - LISTA DE ACONTECIMIENTOS</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-la').click()">
+                    <div class="upload-icon"><i class="fas fa-list-check"></i></div>
+                </label>
+                <div id="preview-la" class="diagram-placeholder" style="text-align: left;">
+                    <ul style="line-height: 2; margin-top: 1rem; list-style-position: inside;">
+                        <li>El sistema debe permitir generar cotizaciones para pedidos o reservas.</li>
+                        <li>El sistema debe permitir registrar devoluciones o reclamos de los clientes.</li>
+                        <li>El sistema debe enviar notificaciones de confirmación o recordatorios a los clientes.</li>
+                        <li>El sistema debe emitir alertas por bajo stock de productos o bebidas.</li>
+                        <li>El sistema debe permitir consultar el historial de ventas, reservas y pagos.</li>
+                        <li>El sistema debe generar reportes de ventas, reservas y ganancias.</li>
+                        <li>El sistema debe mantener la información de clientes, empleados y encargados.</li>
+                        <li>El sistema debe garantizar la seguridad y confidencialidad de los datos registrados.</li>
+                        <li>El sistema debe permitir el control de acceso según el rol del usuario (cliente, empleado,
+                            encargado).</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Diagrama de Transición de Estados -->
-    <div class="card">
-         <h3><i class="fas fa-random"></i> DIAGRAMA DE TRANSICIÓN DE ESTADOS</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-estados').click()">
-            <div class="upload-icon"><i class="fas fa-random"></i></div>
-        </label>
+            <!-- DFD con Galería de Niveles -->
+            <div class="card">
+                <h3><i class="fas fa-exchange-alt"></i> DFD – DIAGRAMA DE FLUJO DE DATOS POR NIVELES</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-dfd').click()">
+                    <div class="upload-icon"><i class="fas fa-exchange-alt"></i></div>
+                </label>
 
-        <div id="preview-estados" class="diagram-placeholder">
-            <div class="diagram-viewer" id="viewer-estados">
-                <div class="diagram-controls">
-                    <button class="diagram-btn" onclick="zoomDiagram('viewer-estados', 1.2)"><i class="fas fa-search-plus"></i></button>
-                    <button class="diagram-btn" onclick="zoomDiagram('viewer-estados', 0.8)"><i class="fas fa-search-minus"></i></button>
-                    <button class="diagram-btn" onclick="resetDiagram('viewer-estados')"><i class="fa-solid fa-rotate-right"></i> Restaurar</button>
-                    <button class="diagram-btn" onclick="fitDiagram('viewer-estados')"><i class="fa-solid fa-maximize"></i> Ajustar</button>
-                    <div class="zoom-info" id="zoom-info-estados">100%</div>
-                </div>
-                <div class="diagram-container" id="container-estados">
-                    <img 
-                        id="img-estados" 
-                        src="img/diagramas/Analisis_Estructurado-DiagramaDeTransición.drawio.png" 
-                        alt="Diagrama de Transición de Estados"
-                        onload="fitDiagram('viewer-estados')"
-                    />
+                <div id="preview-dfd" class="diagram-placeholder">
+                    <p style="margin-bottom: 1rem;">Navega entre los diferentes niveles del diagrama</p>
+                    <div class="diagram-viewer" id="viewer-dfd-gallery">
+                        <div class="diagram-controls dfd-controls">
+                            <button class="diagram-btn" onclick="prevDFD()"><i class="fas fa-chevron-left"></i></button>
+                            <span class="zoom-info" id="dfd-index">1/4</span>
+                            <button class="diagram-btn" onclick="nextDFD()"><i
+                                    class="fas fa-chevron-right"></i></button>
+                            <button class="diagram-btn" onclick="zoomDFDGallery(1.2)"><i
+                                    class="fas fa-search-plus"></i></button>
+                            <button class="diagram-btn" onclick="zoomDFDGallery(0.8)"><i
+                                    class="fas fa-search-minus"></i></button>
+                            <button class="diagram-btn" onclick="fitDFDGallery()"><i class="fa-solid fa-maximize"></i>
+                                Ajustar</button>
+                            <button class="diagram-btn" onclick="resetDFDGallery()"><i
+                                    class="fa-solid fa-rotate-right"></i> Restaurar</button>
+                            <div class="zoom-info" id="dfd-zoom-info">100%</div>
+                        </div>
+
+                        <div class="diagram-container" id="dfd-gallery-container">
+                            <img id="dfd-gallery-img" src="img/diagramas/Analisis_Estructurado-Nivel0.drawio.png"
+                                alt="DFD Nivel 0" />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Diccionario de Datos -->
-    <div class="card">
-         <h3><i class="fas fa-book-open"></i> Diccionario de Datos</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-diccionario').click()">
-            <div class="upload-icon"><i class="fas fa-book-open"></i></div>
-        </label>
-        <div id="preview-diccionario" class="diagram-placeholder" style="text-align: left;">
-            <p style="line-height: 1.8">
-                El diccionario de datos define las estructuras de información utilizadas en el sistema:
-            </p>
-            <ul style="margin-top: 1rem; line-height: 1.8; list-style-position: inside;">
-                <li><strong>Reserva:</strong> ID, Cliente, Fecha, Hora, NumComensales, Estado</li>
-                <li><strong>Pedido:</strong> ID, Cliente, Fecha, Platos[], Total, Estado, TipoServicio</li>
-                <li><strong>Plato:</strong> ID, Nombre, Descripción, Precio, Ingredientes[], Disponible</li>
-                <li><strong>Cliente:</strong> ID, Nombre, Teléfono, Dirección, Email</li>
-                <li><strong>Delivery:</strong> ID, Pedido, Repartidor, DirecciónDestino, EstadoEntrega, TiempoEstimado</li>
-            </ul>
-        </div>
-    </div>
-</section>
+            <!-- Diagrama E/R -->
+            <div class="card">
+                <h3><i class="fas fa-network-wired"></i> E/R - DIAGRAMA ENTIDAD RELACIÓN</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-er').click()">
+                    <div class="upload-icon"><i class="fas fa-network-wired"></i></div>
+                </label>
+
+                <div id="preview-er" class="diagram-placeholder">
+                    <div class="diagram-viewer" id="viewer-er">
+                        <div class="diagram-controls">
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-er', 1.2)"><i
+                                    class="fas fa-search-plus"></i></button>
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-er', 0.8)"><i
+                                    class="fas fa-search-minus"></i></button>
+                            <button class="diagram-btn" onclick="resetDiagram('viewer-er')"><i
+                                    class="fa-solid fa-rotate-right"></i> Restaurar</button>
+                            <button class="diagram-btn" onclick="fitDiagram('viewer-er')"><i
+                                    class="fa-solid fa-maximize"></i> Ajustar</button>
+                            <div class="zoom-info" id="zoom-info-er">100%</div>
+                        </div>
+                        <div class="diagram-container" id="container-er">
+                            <img id="img-er" src="img/diagramas/Analisis_Estructurado-ER.drawio.png"
+                                alt="Diagrama Entidad Relación" onload="fitDiagram('viewer-er')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagrama de Transición de Estados -->
+            <div class="card">
+                <h3><i class="fas fa-random"></i> DIAGRAMA DE TRANSICIÓN DE ESTADOS</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-estados').click()">
+                    <div class="upload-icon"><i class="fas fa-random"></i></div>
+                </label>
+
+                <div id="preview-estados" class="diagram-placeholder">
+                    <div class="diagram-viewer" id="viewer-estados">
+                        <div class="diagram-controls">
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-estados', 1.2)"><i
+                                    class="fas fa-search-plus"></i></button>
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-estados', 0.8)"><i
+                                    class="fas fa-search-minus"></i></button>
+                            <button class="diagram-btn" onclick="resetDiagram('viewer-estados')"><i
+                                    class="fa-solid fa-rotate-right"></i> Restaurar</button>
+                            <button class="diagram-btn" onclick="fitDiagram('viewer-estados')"><i
+                                    class="fa-solid fa-maximize"></i> Ajustar</button>
+                            <div class="zoom-info" id="zoom-info-estados">100%</div>
+                        </div>
+                        <div class="diagram-container" id="container-estados">
+                            <img id="img-estados"
+                                src="img/diagramas/Analisis_Estructurado-DiagramaDeTransición.drawio.png"
+                                alt="Diagrama de Transición de Estados" onload="fitDiagram('viewer-estados')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diccionario de Datos -->
+            <div class="card">
+                <h3><i class="fas fa-book-open"></i> Diccionario de Datos</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-diccionario').click()">
+                    <div class="upload-icon"><i class="fas fa-book-open"></i></div>
+                </label>
+                <div id="preview-diccionario" class="diagram-placeholder" style="text-align: left;">
+                    <p style="line-height: 1.8">
+                        El diccionario de datos define las estructuras de información utilizadas en el sistema:
+                    </p>
+                    <ul style="margin-top: 1rem; line-height: 1.8; list-style-position: inside;">
+                        <li><strong>Reserva:</strong> ID, Cliente, Fecha, Hora, NumComensales, Estado</li>
+                        <li><strong>Pedido:</strong> ID, Cliente, Fecha, Platos[], Total, Estado, TipoServicio</li>
+                        <li><strong>Plato:</strong> ID, Nombre, Descripción, Precio, Ingredientes[], Disponible</li>
+                        <li><strong>Cliente:</strong> ID, Nombre, Teléfono, Dirección, Email</li>
+                        <li><strong>Delivery:</strong> ID, Pedido, Repartidor, DirecciónDestino, EstadoEntrega,
+                            TiempoEstimado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- POO -->
-       <section id="poo" class="content-section">
+              <section id="poo" class="content-section">
     <div class="page-header">
         <h2><i class="fa-solid fa-cubes"></i> Paradigma Orientado a Objetos</h2>
         <p>Diagramas UML y diseño de clases</p>
@@ -540,172 +594,256 @@
     </div>
 </section>
 
+        <section id="UML" class="content-section">
+            <div class="page-header">
+                <h2><i class="fa-solid fa-cubes"></i> Diagramas de Lenguaje de Modelado Unificado</h2>
+                <p>Diagrama de Caso de Uso de Sistema y de Negocios</p>
+            </div>
 
+            <div class="card">
+                <h3><i class="fa-solid fa-diagram-project"></i> Diagrama de Caso de Uso de Sistema</h3>
+                <label class="upload-area" onclick="document.getElementById('diagram-poo').click()">
+                    <div class="upload-icon"><i class="fa-solid fa-image"></i></div>
+                </label>
+
+                <div id="preview-poo" class="diagram-placeholder">
+                    <div class="diagram-viewer" id="viewer-uml">
+                        <div class="diagram-controls">
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-uml', 1.2)" title="Acercar">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </button>
+                            <button class="diagram-btn" onclick="zoomDiagram('viewer-uml', 0.8)" title="Alejar">
+                                <i class="fa-solid fa-magnifying-glass-minus"></i>
+                            </button>
+                            <button class="diagram-btn" onclick="resetDiagram('viewer-uml')"
+                                title="Restaurar tamaño original">
+                                <i class="fa-solid fa-rotate-right"></i> Restaurar
+                            </button>
+                            <button class="diagram-btn" onclick="fitDiagram('viewer-uml')"
+                                title="Ajustar al contenedor">
+                                <i class="fa-solid fa-maximize"></i> Ajustar
+                            </button>
+                            <div class="zoom-info" id="zoom-info-uml">100%</div>
+                        </div>
+
+                        <div class="diagram-container" id="container-uml">
+                            <img id="img-uml" src="img/diagramas/CUS.drawio.jpg" alt="Diagrama de Clases UML"
+                                onload="fitDiagram('viewer-uml')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-pen-to-square"></i> Caracteristicas del Diseño CUS</h3>
+                <ul style="margin-top: 1rem; line-height: 1.8">
+                    <li><strong>Caso de uso:</strong> Gestiona la información de usuarios y sus credenciales de acceso
+                        para tomar pedidos ya sea presencialmente o virtula por la pltaforma.</li>
+                    <li><strong>Lista de actores:</strong> Cliente, mesero, repartidor, proveedor y encargado.</li>
+                    <li><strong>Proposito:</strong> Registrar digitalmente el pedido del cliente en el sistema para
+                        mejorar la rapidez, control y trazabilidad de los pedidos.</li>
+                    <li><strong>Resumen:</strong> Almacena información del menú y verifica disponibilidad de
+                        ingredientes.</li>
+                    <li><strong>Tipo:</strong>Primario</li>
+                </ul>
+            </div>
+
+            <div id="preview-cun" class="diagram-placeholder">
+                <h3><i class="fa-solid fa-diagram-project"></i> Diagrama de Caso de Uso de Negocios</h3>
+                <div class="diagram-viewer" id="viewer-cun">
+                    <div class="diagram-controls">
+                        <button class="diagram-btn" onclick="zoomDiagram('viewer-cun', 1.2)" title="Acercar">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </button>
+                        <button class="diagram-btn" onclick="zoomDiagram('viewer-cun', 0.8)" title="Alejar">
+                            <i class="fa-solid fa-magnifying-glass-minus"></i>
+                        </button>
+                        <button class="diagram-btn" onclick="resetDiagram('viewer-cun')"
+                            title="Restaurar tamaño original">
+                            <i class="fa-solid fa-rotate-right"></i> Restaurar
+                        </button>
+                        <button class="diagram-btn" onclick="fitDiagram('viewer-cun')" title="Ajustar al contenedor">
+                            <i class="fa-solid fa-maximize"></i> Ajustar
+                        </button>
+                        <div class="zoom-info" id="zoom-info-cun">100%</div>
+                    </div>
+
+                    <div class="diagram-container" id="container-cun">
+                        <img id="img-cun" src="img/diagramas/CUN.drawio.jpg" alt="Diagrama de Caso de Uso de Negocios"
+                            onload="fitDiagram('viewer-cun')" />
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-pen-to-square"></i> Caracteristicas del Diseño CUN</h3>
+                <ul style="margin-top: 1rem; line-height: 1.8">
+                    <li><strong>Caso de uso:</strong> Gestiona la información de usuarios y sus credenciales de acceso
+                        para tomar pedidos ya sea presencialmente o virtula por la pltaforma.</li>
+                    <li><strong>Lista de actores:</strong> Cliente, mesero, repartidor, proveedor y encargado.</li>
+                    <li><strong>Proposito:</strong> Registrar digitalmente el pedido del cliente en el sistema para
+                        mejorar la rapidez, control y trazabilidad de los pedidos.</li>
+                    <li><strong>Resumen:</strong> Almacena información del menú y verifica disponibilidad de
+                        ingredientes.</li>
+                    <li><strong>Tipo:</strong>Primario</li>
+                </ul>
+            </div>
+        </section>
         <!-- VIDEO -->
         <!-- VIDEO -->
-<section id="video" class="content-section">
-    <div class="page-header">
-        <h2><i class="fa-solid fa-video"></i> Video del Proyecto</h2>
-        <p>Presentación multimedia del sistema</p>
-    </div>
+        <section id="video" class="content-section">
+            <div class="page-header">
+                <h2><i class="fa-solid fa-video"></i> Video del Proyecto</h2>
+                <p>Presentación multimedia del sistema</p>
+            </div>
 
-    <div class="card">
-        <h3><i class="fa-solid fa-circle-play"></i> Video Explicativo</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-video').click()">
-            <div class="upload-icon"><i class="fa-solid fa-film"></i></div>
-        </label>
+            <div class="card">
+                <h3><i class="fa-solid fa-circle-play"></i> Video Explicativo</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-video').click()">
+                    <div class="upload-icon"><i class="fa-solid fa-film"></i></div>
+                </label>
 
-        <div id="video-preview" class="diagram-placeholder">
-            <p style="margin-bottom: 1rem">
-                Presentación completa del sistema Los Nísperos
-            </p>
+                <div id="video-preview" class="diagram-placeholder">
+                    <p style="margin-bottom: 1rem">
+                        Presentación completa del sistema Los Nísperos
+                    </p>
 
-            <div class="video-container">
-            <iframe 
-                src="https://drive.google.com/file/d/16zdXZchP0tfx1Zw-gMFFGDVdms7XOQL3/preview"
-                width="100%"
-                height="480"
-                allow="autoplay"
-                allowfullscreen>
-            </iframe>
-</div>
-        </div>
-    </div>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/16zdXZchP0tfx1Zw-gMFFGDVdms7XOQL3/preview"
+                            width="100%" height="480" allow="autoplay" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
 
-    <div class="card">
-        <h3><i class="fa-solid fa-clipboard-list"></i> Descripción del Video</h3>
-        <p style="line-height: 1.8">
-            El video presenta una demostración completa del sistema desarrollado
-            para Los Nísperos, mostrando las funcionalidades principales de
-            reservas, pedidos y delivery, así como la arquitectura técnica
-            implementada mediante análisis estructurado y programación orientada
-            a objetos.
-        </p>
-    </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-clipboard-list"></i> Descripción del Video</h3>
+                <p style="line-height: 1.8">
+                    El video presenta una demostración completa del sistema desarrollado
+                    para Los Nísperos, mostrando las funcionalidades principales de
+                    reservas, pedidos y delivery, así como la arquitectura técnica
+                    implementada mediante análisis estructurado y programación orientada
+                    a objetos.
+                </p>
+            </div>
 
 
-    <div class="card">
-    <h3><i class="fa-solid fa-clipboard-list"></i> Explicación tutoriales</h3>
-    <p style="line-height: 1.8">
-        En los siguientes tutoriales se explica paso a paso la realización de los diagramas
-        utilizados en el análisis estructurado del sistema.
-    </p>
-    
-    <p style="line-height: 1.8; margin-top: 15px;">
-        <strong>Diagramas por Niveles (DFD):</strong> Representan el flujo de datos del sistema 
-        organizados jerárquicamente desde el nivel general hasta los procesos más específicos.
-    </p>
-    
-    <p style="line-height: 1.8; margin-top: 10px;">
-        <strong>Diagrama Entidad-Relación:</strong> Modelo que representa las entidades de la 
-        base de datos y sus relaciones.
-    </p>
-    
-    <p style="line-height: 1.8; margin-top: 15px;">
-        Existen herramientas especializadas como <strong>Draw.io</strong> 
-        (<a href="https://app.diagrams.net" target="_blank" class="link-styled">https://app.diagrams.net</a>), 
-        <strong>Lucidchart</strong> 
-        (<a href="https://www.lucidchart.com" target="_blank" class="link-styled">https://www.lucidchart.com</a>). 
-        Los diagramas de este proyecto fueron realizados en <strong>Draw.io</strong> por la sencillez 
-        de su interfaz y la posibilidad de exportar imágenes de alta calidad de forma gratuita, además 
-        de poder utilizarlo tanto de forma online como offline.
-    </p>
-</div>
+            <div class="card">
+                <h3><i class="fa-solid fa-clipboard-list"></i> Explicación tutoriales</h3>
+                <p style="line-height: 1.8">
+                    En los siguientes tutoriales se explica paso a paso la realización de los diagramas
+                    utilizados en el análisis estructurado del sistema.
+                </p>
+
+                <p style="line-height: 1.8; margin-top: 15px;">
+                    <strong>Diagramas por Niveles (DFD):</strong> Representan el flujo de datos del sistema
+                    organizados jerárquicamente desde el nivel general hasta los procesos más específicos.
+                </p>
+
+                <p style="line-height: 1.8; margin-top: 10px;">
+                    <strong>Diagrama Entidad-Relación:</strong> Modelo que representa las entidades de la
+                    base de datos y sus relaciones.
+                </p>
+
+                <p style="line-height: 1.8; margin-top: 15px;">
+                    Existen herramientas especializadas como <strong>Draw.io</strong>
+                    (<a href="https://app.diagrams.net" target="_blank"
+                        class="link-styled">https://app.diagrams.net</a>),
+                    <strong>Lucidchart</strong>
+                    (<a href="https://www.lucidchart.com" target="_blank"
+                        class="link-styled">https://www.lucidchart.com</a>).
+                    Los diagramas de este proyecto fueron realizados en <strong>Draw.io</strong> por la sencillez
+                    de su interfaz y la posibilidad de exportar imágenes de alta calidad de forma gratuita, además
+                    de poder utilizarlo tanto de forma online como offline.
+                </p>
+            </div>
 
 
-    
 
 
-    <div class="card">
-        <h3><i class="fa-solid fa-circle-play"></i> Video Tutorial Diagrama por niveles </h3>
-        <label class="upload-area" onclick="document.getElementById('upload-video').click()">
-            <div class="upload-icon"><i class="fa-solid fa-film"></i></div>
-        </label>
 
-        <div id="video-preview" class="diagram-placeholder">
-            <p style="margin-bottom: 1rem">
-                Presentación completa del sistema Los Nísperos
-            </p>
+            <div class="card">
+                <h3><i class="fa-solid fa-circle-play"></i> Video Tutorial Diagrama por niveles </h3>
+                <label class="upload-area" onclick="document.getElementById('upload-video').click()">
+                    <div class="upload-icon"><i class="fa-solid fa-film"></i></div>
+                </label>
 
-            <div class="video-container">
-            <iframe 
-                src="https://drive.google.com/file/d/1Lq9VhRYvMeWZoKTgNI1vVp2FpWUQul4n/preview"
-                width="100%"
-                height="480"
-                allow="autoplay"
-                allowfullscreen>
-            </iframe>
-</div>
-        </div>
-    </div>
+                <div id="video-preview" class="diagram-placeholder">
+                    <p style="margin-bottom: 1rem">
+                        Presentación completa del sistema Los Nísperos
+                    </p>
 
-    <div class="card">
-        <h3><i class="fa-solid fa-circle-play"></i> Video Tutorial Diagrama Entidad Relacion</h3>
-        <label class="upload-area" onclick="document.getElementById('upload-video').click()">
-            <div class="upload-icon"><i class="fa-solid fa-film"></i></div>
-        </label>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1Lq9VhRYvMeWZoKTgNI1vVp2FpWUQul4n/preview"
+                            width="100%" height="480" allow="autoplay" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
 
-        <div id="video-preview" class="diagram-placeholder">
-            
-            <div class="video-container">
-            <iframe 
-                src="https://drive.google.com/file/d/1UaNhxQ5a7FcXEzi4FkmYhP43ub9gOQ65/preview"
-                width="100%"
-                height="480"
-                allow="autoplay"
-                allowfullscreen>
-            </iframe>
-</div>
-        </div>
-    </div>
-</section>
+            <div class="card">
+                <h3><i class="fa-solid fa-circle-play"></i> Video Tutorial Diagrama Entidad Relacion</h3>
+                <label class="upload-area" onclick="document.getElementById('upload-video').click()">
+                    <div class="upload-icon"><i class="fa-solid fa-film"></i></div>
+                </label>
+
+                <div id="video-preview" class="diagram-placeholder">
+
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1UaNhxQ5a7FcXEzi4FkmYhP43ub9gOQ65/preview"
+                            width="100%" height="480" allow="autoplay" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <section id="contactos" class="content-section">
             <div class="page-header">
-    <h2><i class="fa-solid fa-phone"></i> Contactos</h2>
-    <p>Equipo de Desarrollo - Universidad Mayor de San Andrés (UMSA)</p>
-</div>
+                <h2><i class="fa-solid fa-phone"></i> Contactos</h2>
+                <p>Equipo de Desarrollo - Universidad Mayor de San Andrés (UMSA)</p>
+            </div>
 
 
             <div class="card">
-    <h3><i class="fa-solid fa-map-location-dot"></i> Ubicación</h3>
-    <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
-        Dirección: <strong>Carr. Principal Río Abajo 33</strong>
-    </p>
-    <div style="margin-top: 1rem; border-radius: 8px; overflow: hidden; height: 420px;">
-        <iframe
-            src="https://www.google.com/maps?q=Carr.+Principal+R%C3%ADo+Abajo+33&output=embed"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            aria-label="Mapa de ubicación Carr. Principal Río Abajo 33">
-        </iframe>
-    </div>
-    <p style="margin-top:0.8rem; font-size:0.95rem; color:#555;">La ubicación está fijada y no puede editarse desde aquí.</p>
-</div>
+                <h3><i class="fa-solid fa-map-location-dot"></i> Ubicación</h3>
+                <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem;">
+                    Dirección: <strong>Carr. Principal Río Abajo 33</strong>
+                </p>
+                <div style="margin-top: 1rem; border-radius: 8px; overflow: hidden; height: 420px;">
+                    <iframe src="https://www.google.com/maps?q=Carr.+Principal+R%C3%ADo+Abajo+33&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        aria-label="Mapa de ubicación Carr. Principal Río Abajo 33">
+                    </iframe>
+                </div>
+                <p style="margin-top:0.8rem; font-size:0.95rem; color:#555;">La ubicación está fijada y no puede
+                    editarse desde aquí.</p>
+            </div>
 
-<!-- Información del Restaurante -->
-<div class="card">
-    <h3><i class="fa-solid fa-utensils"></i> Información del Restaurante "Los Nísperos"</h3>
-    <div style="line-height: 2; font-size: 1.05rem;">
-        <p><strong><i class="fa-solid fa-location-dot"></i> Dirección:</strong> Carretera Principal a Río Abajo N° 4149, Zona Mallasa, La Paz - Bolivia</p>
-        <p><strong><i class="fa-solid fa-phone"></i> Teléfono:</strong> +591 73042351</p>
-        <p><strong><i class="fa-solid fa-clock"></i> Horarios:</strong> Sábados y Domingos de 8:00 a 18:00</p>
-        
-    </div>
-</div>
+            <!-- Información del Restaurante -->
+            <div class="card">
+                <h3><i class="fa-solid fa-utensils"></i> Información del Restaurante "Los Nísperos"</h3>
+                <div style="line-height: 2; font-size: 1.05rem;">
+                    <p><strong><i class="fa-solid fa-location-dot"></i> Dirección:</strong> Carretera Principal a Río
+                        Abajo N° 4149, Zona Mallasa, La Paz - Bolivia</p>
+                    <p><strong><i class="fa-solid fa-phone"></i> Teléfono:</strong> +591 73042351</p>
+                    <p><strong><i class="fa-solid fa-clock"></i> Horarios:</strong> Sábados y Domingos de 8:00 a 18:00
+                    </p>
+
+                </div>
+            </div>
 
 
             <!-- Redes Sociales -->
-            
+
         </section>
     </main>
 
 
     <script src="funtions.js"></script>
 </body>
+
 </html>

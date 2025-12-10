@@ -1,17 +1,17 @@
 
-        // Toggle Sidebar
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
+// Toggle Sidebar
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+}
 
-                // Toggle Theme
-                function toggleTheme() {
+// Toggle Theme
+function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById('theme-icon');
-  
+
     // Alternar clase del tema
     body.classList.toggle('dark-mode');
-  
+
     // Cambiar ícono según el modo
     if (body.classList.contains('dark-mode')) {
         icon.classList.replace('fa-moon', 'fa-sun'); // ☀️
@@ -85,94 +85,94 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const navLinks = document.querySelectorAll('.nav-link');
-    const preview = document.getElementById('nav-preview');
-    const previewHeader = document.getElementById('preview-header');
-    const previewContentEl = document.getElementById('preview-content');
-    let hideTimeout;
+const preview = document.getElementById('nav-preview');
+const previewHeader = document.getElementById('preview-header');
+const previewContentEl = document.getElementById('preview-content');
+let hideTimeout;
 
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function(e) {
-            clearTimeout(hideTimeout);
+navLinks.forEach(link => {
+    link.addEventListener('mouseenter', function (e) {
+        clearTimeout(hideTimeout);
 
-            const sectionId = this.getAttribute('data-section');
-            const linkText = this.querySelector('span:last-child') ? this.querySelector('span:last-child').textContent.trim() : '';
-            const sectionIcon = this.querySelector('.nav-icon i') ? this.querySelector('.nav-icon i').className : 'fas fa-file';
+        const sectionId = this.getAttribute('data-section');
+        const linkText = this.querySelector('span:last-child') ? this.querySelector('span:last-child').textContent.trim() : '';
+        const sectionIcon = this.querySelector('.nav-icon i') ? this.querySelector('.nav-icon i').className : 'fas fa-file';
 
-            if (!sectionId) return;
+        if (!sectionId) return;
 
-            const section = document.getElementById(sectionId);
-            if (!section) return;
+        const section = document.getElementById(sectionId);
+        if (!section) return;
 
-            // Construir menú con títulos (h3/h4) de las cards
-            const cards = Array.from(section.querySelectorAll('.card'));
-            const menu = document.createElement('div');
-            menu.className = 'preview-menu';
-            const ul = document.createElement('ul');
-            ul.style.listStyle = 'none';
-            ul.style.margin = '0';
-            ul.style.padding = '0';
+        // Construir menú con títulos (h3/h4) de las cards
+        const cards = Array.from(section.querySelectorAll('.card'));
+        const menu = document.createElement('div');
+        menu.className = 'preview-menu';
+        const ul = document.createElement('ul');
+        ul.style.listStyle = 'none';
+        ul.style.margin = '0';
+        ul.style.padding = '0';
 
-            cards.forEach((card, idx) => {
-                const titleEl = card.querySelector('h3') || card.querySelector('h4') || card.querySelector('h2');
-                const title = titleEl ? titleEl.textContent.trim() : `Elemento ${idx+1}`;
+        cards.forEach((card, idx) => {
+            const titleEl = card.querySelector('h3') || card.querySelector('h4') || card.querySelector('h2');
+            const title = titleEl ? titleEl.textContent.trim() : `Elemento ${idx + 1}`;
 
-                const li = document.createElement('li');
-                li.className = 'preview-menu-item';
-                li.textContent = title;
-                li.style.padding = '10px 12px';
-                li.style.cursor = 'pointer';
-                li.style.borderRadius = '6px';
-                li.style.marginBottom = '6px';
-                li.style.fontFamily = 'inherit';
-                li.style.color = 'inherit';
-                li.style.fontSize = '0.95rem';
-                li.style.fontWeight = '500';
+            const li = document.createElement('li');
+            li.className = 'preview-menu-item';
+            li.textContent = title;
+            li.style.padding = '10px 12px';
+            li.style.cursor = 'pointer';
+            li.style.borderRadius = '6px';
+            li.style.marginBottom = '6px';
+            li.style.fontFamily = 'inherit';
+            li.style.color = 'inherit';
+            li.style.fontSize = '0.95rem';
+            li.style.fontWeight = '500';
 
-                li.addEventListener('click', (ev) => {
-                    // Remover clase active de todos los items del menú
-                    document.querySelectorAll('.preview-menu-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    // Añadir clase active al item seleccionado
-                    li.classList.add('active');
-                    
-                    // Mostrar la sección y desplazar al elemento real
-                    showSection(sectionId, document.querySelector(`.nav-link[data-section="${sectionId}"]`));
-                    setTimeout(() => {
-                        const targetCard = document.querySelector(`#${sectionId} .card:nth-of-type(${idx+1})`);
-                        if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 120);
-                    preview.classList.remove('active');
+            li.addEventListener('click', (ev) => {
+                // Remover clase active de todos los items del menú
+                document.querySelectorAll('.preview-menu-item').forEach(item => {
+                    item.classList.remove('active');
                 });
+                // Añadir clase active al item seleccionado
+                li.classList.add('active');
 
-                ul.appendChild(li);
+                // Mostrar la sección y desplazar al elemento real
+                showSection(sectionId, document.querySelector(`.nav-link[data-section="${sectionId}"]`));
+                setTimeout(() => {
+                    const targetCard = document.querySelector(`#${sectionId} .card:nth-of-type(${idx + 1})`);
+                    if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 120);
+                preview.classList.remove('active');
             });
 
-            // Estilizar y posicionar la previsualización al lado del enlace
-            previewHeader.innerHTML = `<i class="${sectionIcon}"></i> ${linkText}`;
-            previewContentEl.innerHTML = '';
-            menu.appendChild(ul);
-            previewContentEl.appendChild(menu);
-
-            // Posicionar cerca del link (lado derecho)
-            const rect = this.getBoundingClientRect();
-            const left = Math.min(window.innerWidth - 320, rect.right + 8);
-            const top = Math.max(8, rect.top - 6);
-            preview.style.left = left + 'px';
-            preview.style.top = top + 'px';
-            preview.style.width = '320px';
-
-            preview.classList.add('active');
+            ul.appendChild(li);
         });
 
-        link.addEventListener('mouseleave', function() {
-            hideTimeout = setTimeout(() => { preview.classList.remove('active'); }, 220);
-        });
+        // Estilizar y posicionar la previsualización al lado del enlace
+        previewHeader.innerHTML = `<i class="${sectionIcon}"></i> ${linkText}`;
+        previewContentEl.innerHTML = '';
+        menu.appendChild(ul);
+        previewContentEl.appendChild(menu);
+
+        // Posicionar cerca del link (lado derecho)
+        const rect = this.getBoundingClientRect();
+        const left = Math.min(window.innerWidth - 320, rect.right + 8);
+        const top = Math.max(8, rect.top - 6);
+        preview.style.left = left + 'px';
+        preview.style.top = top + 'px';
+        preview.style.width = '320px';
+
+        preview.classList.add('active');
     });
 
-        // Mantener visible al pasar sobre la previsualización
-        preview.addEventListener('mouseenter', function() { clearTimeout(hideTimeout); });
-        preview.addEventListener('mouseleave', function() { preview.classList.remove('active'); });
+    link.addEventListener('mouseleave', function () {
+        hideTimeout = setTimeout(() => { preview.classList.remove('active'); }, 220);
+    });
+});
+
+// Mantener visible al pasar sobre la previsualización
+preview.addEventListener('mouseenter', function () { clearTimeout(hideTimeout); });
+preview.addEventListener('mouseleave', function () { preview.classList.remove('active'); });
 
 function openModal(img) {
     modal.classList.add("show");
@@ -182,13 +182,13 @@ function openModal(img) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const containers = document.querySelectorAll('.diagram-container');
-    
+
     containers.forEach(container => {
         let isDragging = false;
         let startX, startY, scrollLeft, scrollTop;
-        
+
         // Cuando presionas el mouse sobre la imagen
         container.addEventListener('mousedown', (e) => {
             const img = container.querySelector('img');
@@ -202,38 +202,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
             }
         });
-        
+
         // Cuando sueltas el mouse
         container.addEventListener('mouseup', () => {
             isDragging = false;
             container.style.cursor = 'grab';
         });
-        
+
         // Cuando el mouse sale del contenedor
         container.addEventListener('mouseleave', () => {
             isDragging = false;
             container.style.cursor = 'grab';
         });
-        
+
         // Cuando mueves el mouse (arrastrando)
         container.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
             e.preventDefault();
-            
+
             const deltaX = e.pageX - startX;
             const deltaY = e.pageY - startY;
-            
+
             container.scrollLeft = scrollLeft - deltaX;
             container.scrollTop = scrollTop - deltaY;
         });
-        
+
         // Cambiar cursor cuando pasa sobre la imagen
         const img = container.querySelector('img');
         if (img) {
             img.addEventListener('mouseenter', () => {
                 container.style.cursor = 'grab';
             });
-            
+
             img.addEventListener('mouseleave', () => {
                 if (!isDragging) {
                     container.style.cursor = 'default';
@@ -303,7 +303,7 @@ function resetDiagram(viewerId) {
     img.style.transformOrigin = 'center center';
     zoomInfo.textContent = '100%';
     container.style.padding = '20px';
-    
+
     // Centrar la imagen
     setTimeout(() => {
         container.scrollLeft = (img.offsetWidth - container.clientWidth) / 2;
@@ -324,7 +324,7 @@ function fitDiagram(viewerId) {
     img.style.transformOrigin = 'center center';
     zoomInfo.textContent = '100%';
     container.style.padding = '20px';
-    
+
     // Centrar la imagen
     setTimeout(() => {
         container.scrollLeft = (img.offsetWidth - container.clientWidth) / 2;
@@ -339,7 +339,9 @@ function initializeDiagrams() {
         'viewer-er',
         'viewer-estados',
         'viewer-poo',
-        'viewer-casos-uso'
+        'viewer-casos-uso',
+        'viewer-uml',
+        'viewer-cun'
     ];
 
     viewers.forEach(viewerId => {
@@ -348,7 +350,7 @@ function initializeDiagrams() {
         const zoomInfo = document.querySelector(`#${viewerId} .zoom-info`);
 
         if (img && container) {
-            img.onload = function() {
+            img.onload = function () {
                 // Establecer zoom al 100%
                 zoomLevels[viewerId] = 1;
                 img.style.transform = 'scale(1)';
@@ -417,19 +419,19 @@ function zoomDFDGallery(factor) {
     const img = document.getElementById('dfd-gallery-img');
     const container = document.getElementById('dfd-gallery-container');
     const zoomInfo = document.getElementById('dfd-zoom-info');
-    
+
     dfdZoom *= factor;
     dfdZoom = Math.max(0.3, Math.min(dfdZoom, 3));
-    
+
     img.style.transform = `scale(${dfdZoom})`;
     zoomInfo.textContent = Math.round(dfdZoom * 100) + '%';
-    
+
     // Agregar padding para scroll completo
     const imgWidth = img.naturalWidth * dfdZoom;
     const imgHeight = img.naturalHeight * dfdZoom;
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
-    
+
     if (imgWidth > containerWidth || imgHeight > containerHeight) {
         const paddingX = Math.max(0, (imgWidth - containerWidth) / 2 + 50);
         const paddingY = Math.max(0, (imgHeight - containerHeight) / 2 + 50);
@@ -443,7 +445,7 @@ function resetDFDGallery() {
     const img = document.getElementById('dfd-gallery-img');
     const container = document.getElementById('dfd-gallery-container');
     const zoomInfo = document.getElementById('dfd-zoom-info');
-    
+
     dfdZoom = 1;
     img.style.transform = 'scale(1)';
     zoomInfo.textContent = '100%';
@@ -456,12 +458,12 @@ function fitDFDGallery() {
     const container = document.getElementById('dfd-gallery-container');
     const img = document.getElementById('dfd-gallery-img');
     const zoomInfo = document.getElementById('dfd-zoom-info');
-    
+
     if (!img || !container || !img.naturalWidth) return;
-    
+
     const containerWidth = container.clientWidth - 40;
     const imgWidth = img.naturalWidth;
-    
+
     if (imgWidth > containerWidth) {
         const scale = containerWidth / imgWidth;
         dfdZoom = scale;
@@ -474,7 +476,7 @@ function fitDFDGallery() {
 }
 
 // Atajos de teclado para la galería DFD
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     const activeSection = document.querySelector('.content-section.active');
     if (activeSection && activeSection.id === 'analisis-estructurado') {
         if (e.key === 'ArrowRight') nextDFD();
@@ -487,7 +489,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Cargar primera imagen al iniciar
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
         if (document.getElementById('dfd-gallery-img')) {
             loadDFDImage();
@@ -502,21 +504,21 @@ function showSection(sectionId) {
     document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
     });
-    
+
     // Show selected section
     document.getElementById(sectionId).classList.add('active');
-    
+
     // Update active nav link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
     });
     event.currentTarget.classList.add('active');
-    
+
     // Close sidebar on mobile
     if (window.innerWidth <= 768) {
         document.getElementById('sidebar').classList.remove('active');
     }
-    
+
     // Reinicializar diagramas de la sección actual
     setTimeout(() => {
         initializeDiagrams();
@@ -533,7 +535,7 @@ function showSection(sectionId) {
 function toggleNavbar() {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.querySelector('.main-content');
-    
+
     if (sidebar && mainContent) {
         sidebar.classList.toggle('hidden');
         mainContent.classList.toggle('expanded');
@@ -547,7 +549,7 @@ function toggleNavbar() {
 
 
 // Mostrar previsualización REAL de cada sección
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
     const preview = document.getElementById('nav-preview');
     const previewHeader = document.getElementById('preview-header');
@@ -565,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function(e) {
+        link.addEventListener('mouseenter', function (e) {
             clearTimeout(hideTimeout);
 
             // Obtener identificador de sección desde data-section (si existe)
@@ -591,7 +593,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             cards.forEach((card, idx) => {
                 const titleEl = card.querySelector('h3') || card.querySelector('h4') || card.querySelector('h2');
-                const title = titleEl ? titleEl.textContent.trim() : `Elemento ${idx+1}`;
+                const title = titleEl ? titleEl.textContent.trim() : `Elemento ${idx + 1}`;
 
                 const li = document.createElement('li');
                 li.className = 'preview-menu-item';
@@ -609,11 +611,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     // Añadir clase active al item seleccionado
                     li.classList.add('active');
-                    
+
                     // Al hacer click en el item del menú: mostrar la sección y desplazarse al elemento real
                     showSection(sectionId, document.querySelector(`.nav-link[data-section=\"${sectionId}\"]`));
                     setTimeout(() => {
-                        const targetCard = document.querySelector(`#${sectionId} .card:nth-of-type(${idx+1})`);
+                        const targetCard = document.querySelector(`#${sectionId} .card:nth-of-type(${idx + 1})`);
                         if (targetCard) {
                             targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }
@@ -637,7 +639,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // Posicionar cerca del link (lado derecho)
             const rect2 = this.getBoundingClientRect();
             const left2 = Math.min(window.innerWidth - 320, rect2.right + 8);
-            const top2 = Math.max(8, rect2.top - 6);
+
+            // Calcular altura real del menú para ajuste de bordes
+            preview.style.display = 'block';
+            preview.style.visibility = 'hidden';
+            const menuHeight = preview.offsetHeight;
+            preview.style.display = '';
+            preview.style.visibility = '';
+
+            let top2 = rect2.top - 6;
+
+            // Si el menú se sale por abajo, ajustarlo hacia arriba
+            if (top2 + menuHeight > window.innerHeight) {
+                top2 = window.innerHeight - menuHeight - 10;
+            }
+
+            // Asegurar que no se salga por arriba
+            top2 = Math.max(10, top2);
+
             preview.style.left = left2 + 'px';
             preview.style.top = top2 + 'px';
             preview.style.width = '320px';
@@ -646,7 +665,7 @@ document.addEventListener('DOMContentLoaded', function() {
             preview.classList.add('active');
         });
 
-        link.addEventListener('mouseleave', function() {
+        link.addEventListener('mouseleave', function () {
             hideTimeout = setTimeout(() => {
                 preview.classList.remove('active');
             }, 300);
@@ -654,11 +673,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mantener visible al pasar sobre la previsualización
-    preview.addEventListener('mouseenter', function() {
+    preview.addEventListener('mouseenter', function () {
         clearTimeout(hideTimeout);
     });
 
-    preview.addEventListener('mouseleave', function() {
+    preview.addEventListener('mouseleave', function () {
         preview.classList.remove('active');
     });
 });
